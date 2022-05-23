@@ -1,10 +1,11 @@
 import * as types from "../Constants/auth";
 
-export const registerUserAction = (user, { resetForm }) => {
-  resetForm();
+export const registerUserAction = (user,history,resetForm) => {
   return {
     type: types.REGISTER_USER,
-    payload: user,
+    user,
+    history,
+    resetForm
   };
 };
 export const registerUserSuccess = (user) => {

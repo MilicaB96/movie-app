@@ -7,7 +7,7 @@ import { Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className='App'>
+    <div className="App">
       <Router>
         <div>
           <ul>
@@ -18,9 +18,8 @@ function App() {
           <hr />
           <Switch>
             <PublicRoute>
-              <Route path={ROUTES.REGISTER} component={RegisterPage}/>
+              <Route path={ROUTES.REGISTER} component={RegisterPage} />
             </PublicRoute>
-
           </Switch>
         </div>
       </Router>

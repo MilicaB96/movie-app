@@ -13,12 +13,7 @@ function RegisterPage() {
   const error = useSelector(selectRegisterError);
   const history = useHistory();
   const handleSubmit = (values, { resetForm }) => {
-    dispatch(
-      registerUserAction(
-        { content: values, meta: { onSuccess: () => history.push("/login") } },
-        { resetForm }
-      )
-    );
+    dispatch(registerUserAction(values, history,resetForm));
   };
   return (
     <div className="register">

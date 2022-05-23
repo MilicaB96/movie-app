@@ -1,20 +1,19 @@
 import * as Yup from "yup";
+import * as msg from "./messages";
+import * as c from "./../../../constatns/auth"
 
-const password_regex = /^(?=.{8,255})(?=.*[0-9])(?=.*[@#$!.?%^&+=]).*$/
-const required_error_message = "Required"
 const REGISTER_SCHEMA = Yup.object().shape({
-    name: Yup.string().required(required_error_message).max(255, "First Name too long"),
-    email: Yup.string().email("Invalid email format").required(required_error_message),
+    name: Yup.string().required(msg.REQUIRED_ERROR_MESSAGE).max(c.UPPER_CHARACTER_LIMIT,msg.NAME_LENGTH_ERROR_MESSAGE),
+    email: Yup.string().email(msg.INVALID_EMAIL_ERROR_MESSAGE).required(msg.REQUIRED_ERROR_MESSAGE),
     password: Yup.string()
-      .required(required_error_message)
+      .required(msg.REQUIRED_ERROR_MESSAGE)
       .matches(
-        password_regex,
-        "Password must be 8 characters long and have at least one number and special character"
-      ),
+        c.PASSWORD_REGEX,
+        msg.INVALID_PASSWORD_ERROR_MESSAGE),
     password_confirmation: Yup.string().oneOf(
       [Yup.ref("password"), null],
-      "Passwords must match"
-    ),
+      msg.PASSWORD_CONFIRMATION_ERROR_MESSAGE
+    ).required(msg.REQUIRED_ERROR_MESSAGE),
   })
 
 export default REGISTER_SCHEMA
