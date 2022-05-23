@@ -20,7 +20,7 @@ const store = createStore(
 window.store = store;
 
 // then run the saga
-for (let saga in sagas) {
-  sagaMiddleware.run(sagas[saga]);
-}
+
+sagaMiddleware.run(sagas);
+
 export default store;

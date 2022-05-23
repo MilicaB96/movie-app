@@ -1,3 +1,6 @@
-import * as authSagas from "./Sagas/auth";
-const sagas = { ...authSagas };
-export default sagas;
+import { all } from "redux-saga/effects";
+import  watchAuthentication from "./Sagas/auth";
+
+export default function* sagas(){
+    yield all([watchAuthentication()])
+}

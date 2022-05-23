@@ -3,7 +3,7 @@ import axios from "axios";
 export default class HttpService {
   constructor() {
     this.client = axios.create({
-      baseURL: "http://localhost:8000/api",
+      baseURL: process.env.REACT_APP_BASE_URL,
     });
     this.client.interceptors.request.use(function (req) {
       const token = localStorage.getItem("token");
