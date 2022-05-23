@@ -1,4 +1,8 @@
-import { legacy_createStore as createStore, applyMiddleware } from "redux";
+import {
+  legacy_createStore as createStore,
+  applyMiddleware,
+  compose,
+} from "redux";
 import createSagaMiddleware from "redux-saga";
 import reducers from "./reducers";
 import sagas from "./sagas";
@@ -6,11 +10,17 @@ import sagas from "./sagas";
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware();
 // mount it on the Store
-export default store = createStore(
+const store = createStore(
   reducers,
-  applyMiddleware(sagaMiddleware),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  compose(
+    applyMiddleware(sagaMiddleware),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
 );
+window.store = store;
 
 // then run the saga
+
 sagaMiddleware.run(sagas);
+
+export default store;
