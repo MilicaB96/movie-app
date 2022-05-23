@@ -1,15 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Route, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { selectIsAuthenticated } from "../../../redux/Selectors/auth";
+import ROUTES from "../routes";
 
-function PublicRoute({ children, ...props }) {
+function PublicRoute({ children}) {
   const isAuthenticated = useSelector(selectIsAuthenticated);
   return (
     <>
-      <Route {...props}>
-        {isAuthenticated ? <Redirect to='/' /> : children}
-      </Route>
+        {isAuthenticated ? <Redirect to={ROUTES.DEFAULT} /> : children}
     </>
   );
 }
