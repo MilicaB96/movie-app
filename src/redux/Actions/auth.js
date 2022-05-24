@@ -20,3 +20,20 @@ export const registerUserError = (message) => {
     message: message,
   };
 };
+
+
+export const loginUserAction = (credentials, histroy, resetForm) => ({
+  type: types.LOGIN_USER,
+  credentials,
+  histroy,
+  resetForm
+})
+export const loginUserSuccess = (credentials) => ({
+  type: types.LOGIN_USER_SUCCESS,
+  credentials
+})
+
+export const loginUserError = (message) => ({
+  type: types.LOGIN_USER_ERROR,
+  message
+})

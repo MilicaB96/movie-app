@@ -7,6 +7,8 @@ import REGISTER_SCHEMA from "../../../shared/validation/yupValidation/register";
 import "./RegisterPage.css";
 import RegisterError from "../../../shared/validation/message/register";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
+import ROUTES from "../../../shared/routes/routes";
 
 function RegisterPage() {
   const dispatch = useDispatch();
@@ -17,6 +19,8 @@ function RegisterPage() {
   };
   return (
     <div className="register">
+      <span>Alreay have an account? </span>
+      <Link className="link" to={ROUTES.LOGIN}>Login</Link>
       <h1>Register</h1>
       <Formik
         initialValues={{

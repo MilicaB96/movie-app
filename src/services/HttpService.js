@@ -5,12 +5,8 @@ export default class HttpService {
     this.client = axios.create({
       baseURL: process.env.REACT_APP_BASE_URL,
     });
-    this.client.interceptors.request.use(function (req) {
-      const token = localStorage.getItem("token");
-      if (token) {
-        req.headers["Authorization"] = `Bearer ${token}`;
-      }
-      return req;
-    });
   }
+  attachHeaders(headers) {
+    Object.assign(this.client.defaults.headers, headers);
+   }
 }

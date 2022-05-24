@@ -1,11 +1,12 @@
 :root {
     --maroon: #602040;
+
 }
-.register{
+.login{
     text-align: center;
     margin: 5em;
 }
-.register > h1{
+.login > h1{
     font-family: Arial, Helvetica, sans-serif;
     color:var(--maroon);
 }
