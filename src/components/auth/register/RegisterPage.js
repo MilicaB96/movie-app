@@ -2,21 +2,27 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUserAction } from "../../../redux/Actions/auth";
-import { selectRegisterError } from "../../../redux/Selectors/auth";
 import REGISTER_SCHEMA from "../../../shared/validation/yupValidation/register";
 import "./RegisterPage.css";
-import RegisterError from "../../../shared/validation/message/register";
+import ValidationError from "../../../shared/validation/message/ValidationError";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
+import ROUTES from "../../../shared/routes/routes";
+import { selectRegisterError } from "../../../redux/Selectors/auth";
 
 function RegisterPage() {
   const dispatch = useDispatch();
   const error = useSelector(selectRegisterError);
   const history = useHistory();
   const handleSubmit = (values, { resetForm }) => {
-    dispatch(registerUserAction(values, history,resetForm));
+    dispatch(registerUserAction(values, history, resetForm));
   };
   return (
     <div className="register">
+      <span>Alreay have an account? </span>
+      <Link className="link" to={ROUTES.LOGIN}>
+        Login
+      </Link>
       <h1>Register</h1>
       <Formik
         initialValues={{
@@ -36,7 +42,7 @@ function RegisterPage() {
               name="name"
               placeholder="First Name"
             />
-            <RegisterError name="name" />
+            <ValidationError name="name" />
             <br />
             <Field
               className="field"
@@ -44,7 +50,7 @@ function RegisterPage() {
               name="email"
               placeholder="Email"
             />
-            <RegisterError name="email" />
+            <ValidationError name="email" />
             {error["email"] && <div>{error["email"]}</div>}
             <br />
             <Field
@@ -53,7 +59,7 @@ function RegisterPage() {
               name="password"
               placeholder="Password"
             />
-            <RegisterError name="password" />
+            <ValidationError name="password" />
             <br />
             <Field
               className="field"
@@ -61,7 +67,7 @@ function RegisterPage() {
               name="password_confirmation"
               placeholder="Confirm password"
             />
-            <RegisterError name="password_confirmation" />
+            <ValidationError name="password_confirmation" />
             <br />
             <button type="submit">Submit!</button>
           </Form>

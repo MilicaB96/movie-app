@@ -1,17 +1,17 @@
 import * as types from "../Constants/auth";
 
-export const registerUserAction = (user,history,resetForm) => {
+export const registerUserAction = (user, history, resetForm) => {
   return {
     type: types.REGISTER_USER,
     user,
     history,
-    resetForm
+    resetForm,
   };
 };
 export const registerUserSuccess = (user) => {
-  return { 
+  return {
     type: types.REGISTER_USER_SUCCESS,
-    user 
+    user,
   };
 };
 export const registerUserError = (message) => {
@@ -20,3 +20,19 @@ export const registerUserError = (message) => {
     message: message,
   };
 };
+
+export const loginUserAction = (credentials, histroy, resetForm) => ({
+  type: types.LOGIN_USER,
+  credentials,
+  histroy,
+  resetForm,
+});
+export const loginUserSuccess = (credentials) => ({
+  type: types.LOGIN_USER_SUCCESS,
+  credentials,
+});
+
+export const loginUserError = (message) => ({
+  type: types.LOGIN_USER_ERROR,
+  message,
+});
