@@ -1,6 +1,6 @@
 import React from "react";
 import { ErrorMessage } from "formik";
-function RegisterError(props) {
+function ValidationError(props) {
   return (
     <>
       <ErrorMessage className="error" {...props}>
@@ -10,4 +10,4 @@ function RegisterError(props) {
   );
 }
 
-export default RegisterError;
+export default ValidationError;

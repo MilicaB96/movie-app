@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { loginUserAction } from "../../../redux/Actions/auth";
 import { selectLoginError } from "../../../redux/Selectors/auth";
 import ROUTES from "../../../shared/routes/routes";
-import RegisterError from "../../../shared/validation/message/register";
+import ValidationError from "../../../shared/validation/message/ValidationError";
 import LOGIN_SCHEMA from "../../../shared/validation/yupValidation/login";
 import "./LoginPage.css";
 
@@ -39,7 +39,7 @@ function LoginPage() {
               name="email"
               placeholder="email"
             />
-            <RegisterError name="email"></RegisterError>
+            <ValidationError name="email"></ValidationError>
             <br />
             <Field
               className="field"
@@ -47,7 +47,7 @@ function LoginPage() {
               name="password"
               placeholder="password"
             />
-            <RegisterError name="password"></RegisterError>
+            <ValidationError name="password"></ValidationError>
             <br />
             {error["detail"] && <div>{error["detail"]}</div>}
             <button type="submit">Login</button>
