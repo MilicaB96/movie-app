@@ -9,7 +9,8 @@ class AuthService extends HttpService {
     this.setAuthorizationHeader();
   }
   getToken = () => {
-    localStorage.getItem("token");
+    const user = localStorage.getItem("token");
+    return user ? JSON.parse(user).access : undefined;
   };
   setAuthorizationHeader = () => {
     const token = this.getToken();
@@ -25,7 +26,7 @@ class AuthService extends HttpService {
   };
   login = async (credentials) => {
     const { data } = await this.client.post(ENDPOINTS.USER_LOGIN, credentials);
-    localStorage.setItem("token", data.access);
+    localStorage.setItem("token", JSON.stringify(data));
     this.setAuthorizationHeader();
     return data;
   };
