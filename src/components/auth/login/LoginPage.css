@@ -1,46 +1,37 @@
-:root {
-    --maroon: #602040;
-
+.login {
+  text-align: center;
+  margin: 5em;
 }
-.login{
-    text-align: center;
-    margin: 5em;
+.field {
+  text-align: center;
+  margin: 0.5em;
+  background-color: white;
+  border-radius: 0.5em;
+  width: 30%;
+  height: 2em;
 }
-.login > h1{
-    font-family: Arial, Helvetica, sans-serif;
-    color:var(--maroon);
-}
-.field{
-    text-align: center;
-    margin: 0.5em;
-    background-color:white;
-    border-radius: 0.5em;
-    width: 30%;
-    height: 2em;
-}
-.field:focus{
-    outline-color: var(--maroon);
+.field:focus {
+  outline-color: var(--maroon);
 }
 .form > button {
-    width: 10%;
-    height: 2em;
-    margin: 0.5em;
-    background-color: white;
-    border-color: gray;
-    border-radius: 0.5em;
-    
+  width: 10%;
+  height: 2em;
+  margin: 0.5em;
+  background-color: white;
+  border-color: gray;
+  border-radius: 0.5em;
 }
-.form > button:hover{
-    background-color: whitesmoke;
-    cursor: pointer;
+.form > button:hover {
+  background-color: whitesmoke;
+  cursor: pointer;
 }
-.error{
-    text-align: center;
+.error {
+  text-align: center;
 }
-.link{
-    text-decoration: none;
-    color:var(--maroon);
+.link {
+  text-decoration: none;
+  color: var(--maroon);
 }
-.link:hover{
-    color:gray;
+.link:hover {
+  color: gray;
 }

@@ -13,13 +13,15 @@ function LoginPage() {
   const dispatch = useDispatch();
   const history = useHistory();
   const error = useSelector(selectLoginError);
-  const handleSubmit = (values,{resetForm}) => {
-    dispatch(loginUserAction(values,history,resetForm))
+  const handleSubmit = (values, { resetForm }) => {
+    dispatch(loginUserAction(values, history, resetForm));
   };
   return (
     <div className="login">
-      <span>Don't have an account? {" "}</span>
-      <Link className="link" to={ROUTES.REGISTER}>Register</Link>
+      <span>Don't have an account? </span>
+      <Link className="link" to={ROUTES.REGISTER}>
+        Register
+      </Link>
       <h1>Login</h1>
       <Formik
         initialValues={{
@@ -47,7 +49,7 @@ function LoginPage() {
             />
             <RegisterError name="password"></RegisterError>
             <br />
-            {error['detail'] && <div>{error['detail']}</div>}
+            {error["detail"] && <div>{error["detail"]}</div>}
             <button type="submit">Login</button>
           </Form>
         )}

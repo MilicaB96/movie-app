@@ -1,7 +1,12 @@
 import { call, fork, put, takeLatest } from "redux-saga/effects";
 import AuthService from "./../../services/AuthService";
 import * as types from "../Constants/auth";
-import { registerUserSuccess, registerUserError, loginUserSuccess, loginUserError } from "../Actions/auth";
+import {
+  registerUserSuccess,
+  registerUserError,
+  loginUserSuccess,
+  loginUserError,
+} from "../Actions/auth";
 import ROUTES from "./../../shared/routes/routes";
 
 export function* registration(action) {
@@ -21,22 +26,21 @@ export function* registrationSaga() {
   yield takeLatest(types.REGISTER_USER, registration);
 }
 
-export function* login(action){
+export function* login(action) {
   try {
-    const {credentials, history, resetForm} = action;
-    const response = yield call(AuthService.login, credentials)
-    yield put(loginUserSuccess(response))
+    const { credentials, history, resetForm } = action;
+    const response = yield call(AuthService.login, credentials);
+    yield put(loginUserSuccess(response));
     resetForm();
     history.push(ROUTES.DEFAULT);
- 
   } catch (error) {
-    if(error.response){
-      yield put(loginUserError(error.response.data))
+    if (error.response) {
+      yield put(loginUserError(error.response.data));
     }
   }
 }
-export function* loginSaga(){
-  yield takeLatest(types.LOGIN_USER, login)
+export function* loginSaga() {
+  yield takeLatest(types.LOGIN_USER, login);
 }
 
 export default function* watchAuthentication() {

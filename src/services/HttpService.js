@@ -8,5 +8,5 @@ export default class HttpService {
   }
   attachHeaders(headers) {
     Object.assign(this.client.defaults.headers, headers);
-   }
+  }
 }
