@@ -6,6 +6,8 @@ import {
   registerUserError,
   loginUserSuccess,
   loginUserError,
+  logoutUserSuccess,
+  logoutUserError,
 } from "../Actions/auth";
 import ROUTES from "./../../shared/routes/routes";
 
@@ -43,7 +45,21 @@ export function* loginSaga() {
   yield takeLatest(types.LOGIN_USER, login);
 }
 
+export function* logout(action) {
+  try {
+    yield call(AuthService.logout);
+    yield put(logoutUserSuccess());
+  } catch (error) {
+    yield put(logoutUserError());
+  }
+}
+
+export function* logoutSaga() {
+  yield takeLatest(types.LOGOUT_USER, logout);
+}
+
 export default function* watchAuthentication() {
   yield fork(registrationSaga);
   yield fork(loginSaga);
+  yield fork(logoutSaga);
 }

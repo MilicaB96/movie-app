@@ -36,3 +36,13 @@ export const loginUserError = (message) => ({
   type: types.LOGIN_USER_ERROR,
   message,
 });
+
+export const logoutUserAction = () => ({
+  type: types.LOGOUT_USER,
+});
+export const logoutUserSuccess = () => ({
+  type: types.LOGOUT_USER_SUCCESS,
+});
+export const logoutUserError = () => ({
+  type: types.LOGOUT_USER_ERROR,
+});

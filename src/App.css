@@ -52,3 +52,25 @@ h1 {
     transform: rotate(360deg);
   }
 }
+nav {
+  margin: 1em;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+
+.logout {
+  height: 3em;
+  width: 6em;
+  border: none;
+  border-radius: 0.5em;
+  background-color: var(--maroon);
+  color: whitesmoke;
+  position: absolute;
+  right: 1em;
+}
+.logout:hover {
+  cursor: pointer;
+  color: var(--maroon);
+  background-color: white;
+}
