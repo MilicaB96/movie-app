@@ -34,7 +34,7 @@ export function* login(action) {
     const response = yield call(AuthService.login, credentials);
     yield put(loginUserSuccess(response));
     resetForm();
-    history.push(ROUTES.DEFAULT);
+    history.push(ROUTES.DASHBOARD);
   } catch (error) {
     if (error.response) {
       yield put(loginUserError(error.response.data));
@@ -49,6 +49,7 @@ export function* logout(action) {
   try {
     yield call(AuthService.logout);
     yield put(logoutUserSuccess());
+    action.history.push(ROUTES.LOGIN);
   } catch (error) {
     yield put(logoutUserError());
   }

@@ -1,37 +1,26 @@
 import React from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import RegisterPage from "./components/auth/register/RegisterPage";
-import PublicRoute from "./shared/routes/routes/PublicRoute";
-import ROUTES from "./shared/routes/routes";
-import { Route } from "react-router-dom";
-import "./App.css";
 import LoginPage from "./components/auth/login/LoginPage";
-import { useDispatch, useSelector } from "react-redux";
-import { selectIsAuthenticated } from "./redux/Selectors/auth";
-import { logoutUserAction } from "./redux/Actions/auth";
+import MoviePage from "./components/auth/movie/MoviePage";
+import PublicRoute from "./shared/routes/routes/PublicRoute";
+import PrivateRoute from "./shared/routes/routes/PrivateRoute";
+import ROUTES from "./shared/routes/routes";
+import "./App.css";
 
 function App() {
-  const dispatch = useDispatch();
-  const isAuthenticated = useSelector(selectIsAuthenticated);
-  const handleLogout = () => {
-    dispatch(logoutUserAction());
-  };
   return (
     <div className="App">
-      <nav>
-        {isAuthenticated && (
-          <button onClick={handleLogout} className="logout" type="submit">
-            Logout
-          </button>
-        )}
-      </nav>
       <Router>
         <div>
           <Switch>
-            <PublicRoute>
-              <Route path={ROUTES.REGISTER} component={RegisterPage} />
-              <Route path={ROUTES.LOGIN} component={LoginPage} />
-            </PublicRoute>
+            <PrivateRoute exact path={ROUTES.DASHBOARD} component={MoviePage} />
+            <PublicRoute exact path={ROUTES.LOGIN} component={LoginPage} />
+            <PublicRoute
+              exact
+              path={ROUTES.REGISTER}
+              component={RegisterPage}
+            />
           </Switch>
         </div>
       </Router>
