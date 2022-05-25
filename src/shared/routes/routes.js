@@ -1,6 +1,6 @@
 const ROUTES = {
-    DEFAULT:"/",
-    REGISTER:"/register",
-    LOGIN:"/login",
-}
-export default ROUTES
+  DASHBOARD: "/dashboard",
+  REGISTER: "/register",
+  LOGIN: "/login",
+};
+export default ROUTES;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, Form, Field } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUserAction } from "../../../redux/Actions/auth";
@@ -12,7 +12,16 @@ import { selectRegisterError } from "../../../redux/Selectors/auth";
 
 function RegisterPage() {
   const dispatch = useDispatch();
-  const error = useSelector(selectRegisterError);
+  const [error, setError] = useState([]);
+  const registerError = useSelector(selectRegisterError);
+  useEffect(() => {
+    if (registerError) {
+      setError(registerError);
+      window.setTimeout(() => {
+        setError([]);
+      }, 3000);
+    }
+  }, [registerError]);
   const history = useHistory();
   const handleSubmit = (values, { resetForm }) => {
     dispatch(registerUserAction(values, history, resetForm));

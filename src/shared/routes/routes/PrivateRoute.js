@@ -5,20 +5,20 @@ import { Redirect } from "react-router-dom";
 import { selectIsAuthenticated } from "../../../redux/Selectors/auth";
 import ROUTES from "../routes";
 
-function PublicRoute({ component: Component, ...rest }) {
+function PrivateRoute({ component: Component, ...rest }) {
   const isAuthenticated = useSelector(selectIsAuthenticated);
   return (
     <Route
       {...rest}
       render={(props) => {
         return isAuthenticated ? (
-          <Redirect to={ROUTES.DASHBOARD} />
-        ) : (
           <Component {...props} />
+        ) : (
+          <Redirect to={ROUTES.LOGIN} />
         );
       }}
     />
   );
 }
 
-export default PublicRoute;
+export default PrivateRoute;

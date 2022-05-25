@@ -8,7 +8,7 @@ const initialState = {
 export default function authReducer(state = initialState, action) {
   switch (action.type) {
     case types.REGISTER_USER_SUCCESS:
-      return { ...state, user: action.user };
+      return { ...state, user: action.user, registerError: [] };
     case types.REGISTER_USER_ERROR:
       return { ...state, registerError: action.message };
     case types.LOGIN_USER_SUCCESS:
@@ -16,9 +16,14 @@ export default function authReducer(state = initialState, action) {
         ...state,
         credentials: action.credentials,
         isAuthenticated: true,
+        loginError: null,
       };
     case types.LOGIN_USER_ERROR:
       return { ...state, loginError: action.message };
+    case types.LOGOUT_USER_SUCCESS:
+      return { ...state, isAuthenticated: false };
+    case types.LOGOUT_USER_ERROR:
+      return { ...state };
     default:
       return state;
   }

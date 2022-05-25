@@ -2,6 +2,7 @@ import HttpService from "./HttpService";
 const ENDPOINTS = {
   USER_REGISTRAION: "/register/",
   USER_LOGIN: "/login/",
+  USER_LOGOUT: "/logout/",
 };
 class AuthService extends HttpService {
   constructor() {
@@ -11,6 +12,10 @@ class AuthService extends HttpService {
   getToken = () => {
     const user = localStorage.getItem("token");
     return user ? JSON.parse(user).access : undefined;
+  };
+  getRefresh = () => {
+    const refresh = localStorage.getItem("token");
+    return refresh ? JSON.parse(refresh).refresh : undefined;
   };
   setAuthorizationHeader = () => {
     const token = this.getToken();
@@ -28,6 +33,12 @@ class AuthService extends HttpService {
     const { data } = await this.client.post(ENDPOINTS.USER_LOGIN, credentials);
     localStorage.setItem("token", JSON.stringify(data));
     this.setAuthorizationHeader();
+    return data;
+  };
+  logout = async () => {
+    const refresh = this.getRefresh();
+    const { data } = await this.client.post(ENDPOINTS.USER_LOGOUT, { refresh });
+    localStorage.removeItem("token");
     return data;
   };
 }
