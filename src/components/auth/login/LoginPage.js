@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import { Formik, Form, Field } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -12,7 +13,16 @@ import "./LoginPage.css";
 function LoginPage() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const error = useSelector(selectLoginError);
+  const [error, setError] = useState([]);
+  const loginError = useSelector(selectLoginError);
+  useEffect(() => {
+    if (loginError) {
+      setError(loginError);
+      setTimeout(() => {
+        setError([]);
+      }, 3000);
+    }
+  }, [loginError]);
   const handleSubmit = (values, { resetForm }) => {
     dispatch(loginUserAction(values, history, resetForm));
   };

@@ -7,7 +7,6 @@ import "./Navbar.css";
 function Navbar() {
   const dispatch = useDispatch();
   const history = useHistory();
-  console.log("u navbar");
   const handleLogout = () => {
     dispatch(logoutUserAction(history));
   };
