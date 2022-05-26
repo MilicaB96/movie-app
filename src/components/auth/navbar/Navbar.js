@@ -1,8 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { logoutUserAction } from "../../../redux/Actions/auth";
 import "./Navbar.css";
+import ROUTES from "../../../shared/routes/routes";
 
 function Navbar() {
   const dispatch = useDispatch();
@@ -12,6 +13,9 @@ function Navbar() {
   };
   return (
     <nav>
+      <Link className="link" to={ROUTES.CREATE_MOVIE}>
+        Add Movie
+      </Link>
       <button onClick={handleLogout} className="logout" type="submit">
         Logout
       </button>

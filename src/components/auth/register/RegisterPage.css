@@ -2,32 +2,6 @@
   text-align: center;
   margin: 5em;
 }
-.field {
-  text-align: center;
-  margin: 0.5em;
-  background-color: white;
-  border-radius: 0.5em;
-  width: 30%;
-  height: 2em;
-}
-.field:focus {
-  outline-color: var(--maroon);
-}
-.form > button {
-  width: 10%;
-  height: 2em;
-  margin: 0.5em;
-  background-color: white;
-  border-color: gray;
-  border-radius: 0.5em;
-}
-.form > button:hover {
-  background-color: whitesmoke;
-  cursor: pointer;
-}
-.error {
-  text-align: center;
-}
 .link {
   text-decoration: none;
   color: var(--maroon);

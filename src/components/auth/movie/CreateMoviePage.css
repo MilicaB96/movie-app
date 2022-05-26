@@ -1,0 +1,22 @@
+.create {
+  text-align: center;
+  margin: 5em;
+}
+.image {
+  margin: 1em;
+}
+.select {
+  margin-bottom: 1em;
+  width: 30%;
+  border-radius: 0.5em;
+  height: 2em;
+  outline: none;
+}
+::-webkit-file-upload-button {
+  background: var(--maroon);
+  cursor: pointer;
+  color: whitesmoke;
+  padding: 0.8em;
+  border: none;
+  border-radius: 0.5em;
+}

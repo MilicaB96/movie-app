@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 import * as msg from "./messages";
-import * as c from "./../../../constatns/auth";
+import * as c from "./../../../constatns/constatns";
 
 const LOGIN_SCHEMA = Yup.object().shape({
   email: Yup.string()
@@ -11,4 +11,4 @@ const LOGIN_SCHEMA = Yup.object().shape({
     .matches(c.PASSWORD_REGEX, msg.INVALID_PASSWORD_ERROR_MESSAGE),
 });
 
-export default LOGIN_SCHEMA
+export default LOGIN_SCHEMA;
