@@ -1,4 +1,5 @@
 const ROUTES = {
+  DASH: "/",
   DASHBOARD: "/dashboard",
   REGISTER: "/register",
   LOGIN: "/login",

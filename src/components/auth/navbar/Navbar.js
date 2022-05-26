@@ -13,6 +13,9 @@ function Navbar() {
   };
   return (
     <nav>
+      <Link className="link" to={ROUTES.MOVIE_LIST}>
+        Movies
+      </Link>
       <Link className="link" to={ROUTES.CREATE_MOVIE}>
         Add Movie
       </Link>
