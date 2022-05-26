@@ -1,9 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
-import { logoutUserAction } from "../../../redux/Actions/auth";
+import { logoutUserAction } from "../../redux/Actions/auth";
 import "./Navbar.css";
-import ROUTES from "../../../shared/routes/routes";
+import ROUTES from "../../shared/routes/routes";
 
 function Navbar() {
   const dispatch = useDispatch();

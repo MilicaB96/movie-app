@@ -1,8 +1,7 @@
 const ROUTES = {
-  DASH: "/",
   DASHBOARD: "/dashboard",
   REGISTER: "/register",
-  LOGIN: "/login",
+  LOGIN: "/",
   MOVIE_LIST: "/dashboard/movies",
   CREATE_MOVIE: "/dashboard/movies/create",
 };
