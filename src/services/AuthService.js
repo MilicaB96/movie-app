@@ -1,10 +1,10 @@
-import HttpService from "./HttpService";
+import ApiService from "./ApiService";
 const ENDPOINTS = {
   USER_REGISTRAION: "/register/",
   USER_LOGIN: "/login/",
   USER_LOGOUT: "/logout/",
 };
-class AuthService extends HttpService {
+class AuthService extends ApiService {
   constructor() {
     super();
     this.setAuthorizationHeader();
@@ -20,7 +20,7 @@ class AuthService extends HttpService {
   setAuthorizationHeader = () => {
     const token = this.getToken();
     if (token) {
-      this.attachHeaders({
+      this.api.attachHeaders({
         Authorization: `Bearer ${token}`,
       });
     }
@@ -37,7 +37,9 @@ class AuthService extends HttpService {
   };
   logout = async () => {
     const refresh = this.getRefresh();
-    const { data } = await this.client.post(ENDPOINTS.USER_LOGOUT, { refresh });
+    const { data } = await this.client.post(ENDPOINTS.USER_LOGOUT, {
+      refresh,
+    });
     localStorage.removeItem("token");
     return data;
   };

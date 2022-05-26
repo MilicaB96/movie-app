@@ -1,12 +1,13 @@
 import axios from "axios";
-
-export default class HttpService {
-  constructor() {
-    this.client = axios.create({
-      baseURL: process.env.REACT_APP_BASE_URL,
-    });
+const options = {
+  baseURL: process.env.REACT_APP_BASE_URL,
+};
+class HttpService {
+  constructor(options = {}) {
+    this.client = axios.create(options);
   }
   attachHeaders(headers) {
     Object.assign(this.client.defaults.headers, headers);
   }
 }
+export default new HttpService(options);

@@ -47,7 +47,7 @@ function RegisterPage() {
           <Form className="form">
             <Field
               className="field"
-              type="name"
+              type="text"
               name="name"
               placeholder="First Name"
             />
@@ -78,7 +78,7 @@ function RegisterPage() {
             />
             <ValidationError name="password_confirmation" />
             <br />
-            <button type="submit">Submit!</button>
+            <button type="submit">Register</button>
           </Form>
         )}
       </Formik>
