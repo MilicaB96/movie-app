@@ -13,9 +13,3 @@
   border: solid;
   object-fit: cover;
 }
-
-.movie > p {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}

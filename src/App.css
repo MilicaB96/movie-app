@@ -78,3 +78,8 @@ h1 {
 .error {
   text-align: center;
 }
+.overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

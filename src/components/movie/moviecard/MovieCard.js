@@ -11,7 +11,7 @@ function MovieCard({ movie }) {
           {movie.title}
         </Link>
       </h1>
-      <p>{movie.description}</p>
+      <p className="overflow">{movie.description}</p>
       <img src={movie.cover_image} alt="cover" />
       <hr />
     </div>
