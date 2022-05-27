@@ -12,7 +12,7 @@ function Navbar() {
     dispatch(logoutUserAction(history));
   };
   return (
-    <nav>
+    <nav id="navbar">
       <Link className="link" to={ROUTES.MOVIE_LIST}>
         Movies
       </Link>

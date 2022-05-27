@@ -14,8 +14,9 @@ export const createMovieError = (message) => ({
   message,
 });
 
-export const fetchAllMoviesAction = () => ({
+export const fetchAllMoviesAction = (page) => ({
   type: types.FETCH_ALL_MOVIES,
+  page,
 });
 export const fetchAllMoviesSuccess = (movies) => ({
   type: types.FETCH_ALL_MOVIES_SUCCESS,

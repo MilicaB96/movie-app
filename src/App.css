@@ -83,3 +83,7 @@ h1 {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.endofline {
+  font-size: 20px;
+  padding: 1em;
+}
