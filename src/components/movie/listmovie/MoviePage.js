@@ -1,64 +1,53 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllMoviesAction } from "../../../redux/Actions/movie";
-import { selectError, selectMovies } from "../../../redux/Selectors/movie";
+import {
+  selectIsNext,
+  selectIsPrev,
+  selectMovies,
+} from "../../../redux/Selectors/movie";
 import MovieCard from "../moviecard/MovieCard";
 
 function MoviePage() {
   const dispatch = useDispatch();
-  const fetchedMovies = useSelector(selectMovies);
-  const error404 = Boolean(useSelector(selectError).status === 404);
+  const movies = useSelector(selectMovies);
+  const isPrev = useSelector(selectIsPrev);
+  const isNext = useSelector(selectIsNext);
   const [page, setPage] = useState(1);
-  const [movies, setMovies] = useState([]);
-  const [isFetching, setIsFetching] = useState(false);
-
-  const fetchMoreListItems = () => {
-    setTimeout(() => {
-      dispatch(fetchAllMoviesAction(page));
-      setIsFetching(false);
-    }, 2000);
-  };
+  // const [movies, setMovies] = useState([]);
   useEffect(() => {
-    setPage(2);
     dispatch(fetchAllMoviesAction(page));
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
     // eslint-disable-next-line
-  }, []);
+  }, [page]);
 
-  useEffect(() => {
-    if (!isFetching) return;
+  const handleNext = () => {
     setPage(page + 1);
-    fetchMoreListItems();
-    // eslint-disable-next-line
-  }, [isFetching]);
-
-  useEffect(() => {
-    setMovies([...movies, ...fetchedMovies]);
-    // eslint-disable-next-line
-  }, [fetchedMovies]);
-
-  const handleScroll = () => {
-    if (
-      Math.ceil(window.innerHeight + document.documentElement.scrollTop) + 10 >
-        document.documentElement.offsetHeight ||
-      error404
-    ) {
-      return;
-    }
-    setIsFetching(true);
+    window.scrollTo(0, 0);
+  };
+  const handlePrev = () => {
+    setPage(page - 1);
+    window.scrollTo(0, 0);
   };
 
   return (
     <div>
-      {fetchedMovies && (
+      {movies && (
         <>
           {movies.map((movie) => (
             <MovieCard key={movie.id} movie={movie} />
           ))}
-          {error404 && (
-            <div className="endofline">There are no more movies</div>
-          )}
+          <div className="navbuttons">
+            {isPrev && (
+              <button type="button" onClick={handlePrev}>
+                Prev
+              </button>
+            )}
+            {isNext && (
+              <button type="button" onClick={handleNext}>
+                Next
+              </button>
+            )}
+          </div>
         </>
       )}
     </div>

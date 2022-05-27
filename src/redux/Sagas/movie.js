@@ -21,9 +21,15 @@ export function* createMovie(action) {
 export function* fetchMovies(action) {
   try {
     const data = yield call(MovieService.getAll, action.page);
-    yield put(fetchAllMoviesSuccess(data.results));
+    yield put(
+      fetchAllMoviesSuccess(
+        data.results,
+        Boolean(data.previous),
+        Boolean(data.next)
+      )
+    );
   } catch (error) {
-    yield put(fetchAllMoviesError(error.response));
+    yield put(fetchAllMoviesError(error));
   }
 }
 export default function* watchMovies() {
