@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ROUTES from "../../../shared/routes/routes";
+import "./MovieCard.css";
+
 function MovieCard({ movie }) {
   return (
     <div className="movie">
@@ -9,7 +11,7 @@ function MovieCard({ movie }) {
           {movie.title}
         </Link>
       </h1>
-      <p>{movie.description.substring(0, 200)}...</p>
+      <p>{movie.description}</p>
       <img src={movie.cover_image} alt="cover" />
       <hr />
     </div>
