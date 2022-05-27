@@ -13,3 +13,15 @@ export const createMovieError = (message) => ({
   type: types.CREATE_MOVIE_ERROR,
   message,
 });
+
+export const fetchAllMoviesAction = () => ({
+  type: types.FETCH_ALL_MOVIES,
+});
+export const fetchAllMoviesSuccess = (movies) => ({
+  type: types.FETCH_ALL_MOVIES_SUCCESS,
+  movies,
+});
+export const fetchAllMoviesError = (message) => ({
+  type: types.FETCH_ALL_MOVIES_ERROR,
+  message,
+});

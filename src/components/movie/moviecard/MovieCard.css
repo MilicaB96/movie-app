@@ -1,0 +1,15 @@
+.movie {
+  margin: 5em;
+}
+.movie > * {
+  margin: 1em;
+}
+.movie .link {
+  font-size: 30px;
+}
+.movie img {
+  width: 20%;
+  height: 40%;
+  border: solid;
+  object-fit: cover;
+}
