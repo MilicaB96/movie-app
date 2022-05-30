@@ -1,0 +1,11 @@
+.search {
+  text-align: justify;
+}
+.search input {
+  margin-left: 1em;
+  width: 30%;
+  height: 2em;
+  border-width: 0.2em;
+  border-color: black;
+  outline: none;
+}

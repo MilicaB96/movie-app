@@ -102,3 +102,7 @@ h1 {
   color: var(--maroon);
   background-color: whitesmoke;
 }
+.notfound {
+  margin: 5em;
+  font-size: 30px;
+}
