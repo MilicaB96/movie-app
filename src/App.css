@@ -83,3 +83,22 @@ h1 {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.endofline {
+  font-size: 20px;
+  padding: 1em;
+}
+.navbuttons > button {
+  margin: 3em;
+  width: 10em;
+  font-size: 1em;
+  color: whitesmoke;
+  background-color: var(--maroon);
+  border: none;
+  border-radius: 0.5em;
+  height: 3em;
+}
+.navbuttons > button:hover {
+  cursor: pointer;
+  color: var(--maroon);
+  background-color: whitesmoke;
+}

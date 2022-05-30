@@ -18,10 +18,16 @@ export function* createMovie(action) {
     yield put(createMovieError(error));
   }
 }
-export function* fetchMovies() {
+export function* fetchMovies(action) {
   try {
-    const data = yield call(MovieService.getAll);
-    yield put(fetchAllMoviesSuccess(data));
+    const data = yield call(MovieService.getAll, action.page);
+    yield put(
+      fetchAllMoviesSuccess(
+        data.results,
+        Boolean(data.previous),
+        Boolean(data.next)
+      )
+    );
   } catch (error) {
     yield put(fetchAllMoviesError(error));
   }

@@ -7,8 +7,10 @@ class MovieService extends ApiService {
     const data = await this.client.post(ENDPOINTS.MOVIE, movie);
     return data.data;
   };
-  getAll = async () => {
-    const data = await this.client.get(ENDPOINTS.MOVIE);
+  getAll = async (page = 1) => {
+    const data = await this.client.get(ENDPOINTS.MOVIE, {
+      params: { page: page },
+    });
     return data.data;
   };
 }
