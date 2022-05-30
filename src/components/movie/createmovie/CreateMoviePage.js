@@ -19,6 +19,7 @@ function CreateMoviePage() {
   }, []);
   const handleSubmit = (values) => {
     const formData = new FormData();
+    console.log(values);
     formData.append("title", values.title);
     formData.append("description", values.description);
     formData.append("cover_image", values.cover_image);
@@ -67,15 +68,19 @@ function CreateMoviePage() {
               />
               <ValidationError name="cover_image" />
               <br />
-              <p>Choose a genre: </p>
-              <Field as="select" className="select" name="genre">
+              <select
+                className="select"
+                name="genre"
+                onChange={(e) => setFieldValue("genre", e.target.value)}
+              >
+                <option value={""}>Choose a genre: </option>
                 {genres &&
                   genres.map((genre) => (
-                    <option key={genre.id} value={genre.id}>
+                    <option key={genre.id} value={genre.name}>
                       {genre.name}
                     </option>
                   ))}
-              </Field>
+              </select>
               <ValidationError name="genre" />
               <br />
               <button type="submit">Add</button>
