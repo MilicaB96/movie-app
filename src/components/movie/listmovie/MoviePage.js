@@ -17,9 +17,9 @@ function MoviePage() {
   }, [page]);
   useEffect(() => {
     setTimeout(() => {
-      setPage(1);
-      if (page === 1) dispatch(fetchAllMoviesAction(page, search));
+      dispatch(fetchAllMoviesAction(1, search));
     }, 750);
+    setPage(1);
   }, [search]);
   return (
     <div>
