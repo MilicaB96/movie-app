@@ -28,3 +28,15 @@ export const fetchAllMoviesError = (message) => ({
   type: types.FETCH_ALL_MOVIES_ERROR,
   message,
 });
+export const fecthMovieAction = (id) => ({
+  type: types.FETCH_MOVIE,
+  id,
+});
+export const fetchMovieSuccess = (movie) => ({
+  type: types.FETCH_MOVIE_SUCCESS,
+  movie,
+});
+export const fetchMovieError = (message) => ({
+  type: types.FETCH_MOVIE_ERROR,
+  message,
+});

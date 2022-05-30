@@ -1,6 +1,12 @@
 import * as types from "../Constants/movie";
 
-const initialState = { movies: [], error: [], isPrev: true, isNext: false };
+const initialState = {
+  movies: [],
+  error: [],
+  isPrev: true,
+  isNext: false,
+  movie: null,
+};
 
 export default function movieReducer(state = initialState, action) {
   switch (action.type) {
@@ -16,6 +22,10 @@ export default function movieReducer(state = initialState, action) {
         isNext: action.isNext,
       };
     case types.FETCH_ALL_MOVIES_ERROR:
+      return { ...state, error: action.message };
+    case types.FETCH_MOVIE_SUCCESS:
+      return { ...state, movie: action.movie };
+    case types.FETCH_MOVIE_ERROR:
       return { ...state, error: action.message };
     default:
       return state;

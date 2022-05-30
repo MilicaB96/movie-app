@@ -4,6 +4,7 @@ import PrivateRoute from "../../shared/routes/routes/PrivateRoute";
 import ROUTES from "../../shared/routes/routes";
 import CreateMoviePage from "../movie/createmovie/CreateMoviePage";
 import MoviePage from "../movie/listmovie/MoviePage";
+import SingleMoviePage from "../movie/singlemovie/SingleMoviePage";
 
 function HomePage() {
   return (
@@ -15,6 +16,11 @@ function HomePage() {
         component={CreateMoviePage}
       />
       <PrivateRoute exact path={ROUTES.MOVIE_LIST} component={MoviePage} />
+      <PrivateRoute
+        exact
+        path={ROUTES.SINGLE_MOVIE}
+        component={SingleMoviePage}
+      />
     </div>
   );
 }

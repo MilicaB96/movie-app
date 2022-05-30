@@ -13,6 +13,10 @@ class MovieService extends ApiService {
     });
     return data.data;
   };
+  getMovie = async (id) => {
+    const data = await this.client.get(`${ENDPOINTS.MOVIE}${id}`);
+    return data.data;
+  };
 }
 
 export default new MovieService();

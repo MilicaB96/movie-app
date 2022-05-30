@@ -1,0 +1,21 @@
+.single_movie {
+  margin: 10em 5em;
+}
+.single_movie > * {
+  padding: 0.5em;
+}
+.single_movie h1 {
+  font-size: 30px;
+  margin: 0;
+}
+.single_movie h2 {
+  margin: 0;
+  font-weight: lighter;
+  font-style: italic;
+}
+.single_movie img {
+  float: left;
+  width: 20%;
+  height: 40%;
+  object-fit: cover;
+}
