@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { pag, selectPaginationState } from "../../redux/Selectors/movie";
+import { selectPaginationState } from "../../redux/Selectors/movie";
 
 function PageNavigation({ setPage, page }) {
   const { isNext, isPrev } = useSelector(selectPaginationState);
