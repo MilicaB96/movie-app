@@ -6,6 +6,8 @@ import {
   createMovieSuccess,
   fetchAllMoviesError,
   fetchAllMoviesSuccess,
+  fetchMovieError,
+  fetchMovieSuccess,
 } from "../Actions/movie";
 import ROUTES from "./../../shared/routes/routes";
 
@@ -32,7 +34,17 @@ export function* fetchMovies(action) {
     yield put(fetchAllMoviesError(error));
   }
 }
+
+export function* fetchMovie(action) {
+  try {
+    const data = yield call(MovieService.getMovie, action.id);
+    yield put(fetchMovieSuccess(data));
+  } catch (error) {
+    yield put(fetchMovieError(error));
+  }
+}
 export default function* watchMovies() {
   yield takeLatest(types.CREATE_MOVIE, createMovie);
   yield takeLatest(types.FETCH_ALL_MOVIES, fetchMovies);
+  yield takeLatest(types.FETCH_MOVIE, fetchMovie);
 }

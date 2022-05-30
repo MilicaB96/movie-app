@@ -3,6 +3,7 @@ const ROUTES = {
   REGISTER: "/register",
   LOGIN: "/",
   MOVIE_LIST: "/dashboard/movies",
-  CREATE_MOVIE: "/dashboard/movies/create",
+  CREATE_MOVIE: "/dashboard/create",
+  SINGLE_MOVIE: "/dashboard/movies/:id",
 };
 export default ROUTES;
