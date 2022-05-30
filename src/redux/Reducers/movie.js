@@ -3,8 +3,10 @@ import * as types from "../Constants/movie";
 const initialState = {
   movies: [],
   error: [],
-  isPrev: true,
-  isNext: false,
+  paginationState: {
+    isPrev: true,
+    isNext: false,
+  },
   movie: null,
 };
 
@@ -18,8 +20,10 @@ export default function movieReducer(state = initialState, action) {
       return {
         ...state,
         movies: action.movies,
-        isPrev: action.isPrev,
-        isNext: action.isNext,
+        paginationState: {
+          isPrev: action.isPrev,
+          isNext: action.isNext,
+        },
       };
     case types.FETCH_ALL_MOVIES_ERROR:
       return { ...state, error: action.message };
