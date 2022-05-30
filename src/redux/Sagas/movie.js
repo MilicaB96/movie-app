@@ -22,7 +22,12 @@ export function* createMovie(action) {
 }
 export function* fetchMovies(action) {
   try {
-    const data = yield call(MovieService.getAll, action.page, action.search);
+    const data = yield call(
+      MovieService.getAll,
+      action.page,
+      action.search,
+      action.genre
+    );
     yield put(
       fetchAllMoviesSuccess(
         data.results,

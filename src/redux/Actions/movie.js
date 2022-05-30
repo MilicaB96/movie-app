@@ -14,10 +14,15 @@ export const createMovieError = (message) => ({
   message,
 });
 
-export const fetchAllMoviesAction = (page = 1, search = null) => ({
+export const fetchAllMoviesAction = (
+  page = 1,
+  search = null,
+  genre = null
+) => ({
   type: types.FETCH_ALL_MOVIES,
   page,
   search,
+  genre,
 });
 export const fetchAllMoviesSuccess = (movies, isPrev, isNext) => ({
   type: types.FETCH_ALL_MOVIES_SUCCESS,

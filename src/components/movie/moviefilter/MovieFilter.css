@@ -1,0 +1,9 @@
+.filter {
+  margin-top: 3em;
+}
+.filter select {
+  width: 30%;
+  text-align: center;
+  outline: none;
+  border: solid;
+}
