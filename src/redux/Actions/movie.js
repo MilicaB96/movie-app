@@ -46,3 +46,29 @@ export const fetchMovieError = (message) => ({
   type: types.FETCH_MOVIE_ERROR,
   message,
 });
+
+export const likeMovieAction = (id) => ({
+  type: types.LIKE_MOVIE,
+  id,
+});
+
+export const likeMovieSuccess = (movie) => ({
+  type: types.LIKE_MOVIE_SUCCESS,
+  movie,
+});
+export const likeMovieError = () => ({
+  type: types.LIKE_MOVIE_ERROR,
+});
+
+export const dislikeMovieAction = (id) => ({
+  type: types.DISLIKE_MOVIE,
+  id,
+});
+
+export const dislikeMovieSuccess = (movie) => ({
+  type: types.DISLIKE_MOVIE_SUCCESS,
+  movie,
+});
+export const dislikeMovieError = () => ({
+  type: types.DISLIKE_MOVIE_ERROR,
+});

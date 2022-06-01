@@ -4,10 +4,14 @@ import { call, put, takeLatest } from "redux-saga/effects";
 import {
   createMovieError,
   createMovieSuccess,
+  dislikeMovieError,
+  dislikeMovieSuccess,
   fetchAllMoviesError,
   fetchAllMoviesSuccess,
   fetchMovieError,
   fetchMovieSuccess,
+  likeMovieError,
+  likeMovieSuccess,
 } from "../Actions/movie";
 import ROUTES from "./../../shared/routes/routes";
 
@@ -48,8 +52,29 @@ export function* fetchMovie(action) {
     yield put(fetchMovieError(error));
   }
 }
+
+export function* likeMovie(action) {
+  try {
+    const data = yield call(MovieService.like, action.id);
+    yield put(likeMovieSuccess(data));
+  } catch (error) {
+    yield put(likeMovieError());
+  }
+}
+
+export function* dislikeMovie(action) {
+  try {
+    const data = yield call(MovieService.dislike, action.id);
+    yield put(dislikeMovieSuccess(data));
+  } catch (error) {
+    yield put(dislikeMovieError());
+  }
+}
+
 export default function* watchMovies() {
   yield takeLatest(types.CREATE_MOVIE, createMovie);
   yield takeLatest(types.FETCH_ALL_MOVIES, fetchMovies);
   yield takeLatest(types.FETCH_MOVIE, fetchMovie);
+  yield takeLatest(types.LIKE_MOVIE, likeMovie);
+  yield takeLatest(types.DISLIKE_MOVIE, dislikeMovie);
 }
