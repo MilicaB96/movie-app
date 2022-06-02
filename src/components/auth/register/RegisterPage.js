@@ -49,7 +49,7 @@ function RegisterPage() {
               className="field"
               type="text"
               name="name"
-              placeholder="First Name"
+              placeholder="Name"
             />
             <ValidationError name="name" />
             <br />

@@ -31,6 +31,36 @@ export default function movieReducer(state = initialState, action) {
       return { ...state, movie: action.movie };
     case types.FETCH_MOVIE_ERROR:
       return { ...state, error: action.message };
+    case types.LIKE_MOVIE_SUCCESS:
+      return {
+        ...state,
+        movies: [
+          ...state.movies?.map?.((movie) => {
+            if (movie.id === action.movie.id) {
+              movie = action.movie;
+            }
+            return movie;
+          }),
+        ],
+        movie: action.movie,
+      };
+    case types.LIKE_MOVIE_ERROR:
+      return { ...state };
+    case types.DISLIKE_MOVIE_SUCCESS:
+      return {
+        ...state,
+        movies: [
+          ...state.movies?.map?.((movie) => {
+            if (movie.id === action.movie.id) {
+              movie = action.movie;
+            }
+            return movie;
+          }),
+        ],
+        movie: action.movie,
+      };
+    case types.DISLIKE_MOVIE_ERROR:
+      return { ...state };
     default:
       return state;
   }

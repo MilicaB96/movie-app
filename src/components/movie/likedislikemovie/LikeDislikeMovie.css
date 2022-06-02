@@ -1,0 +1,28 @@
+.btn_primary {
+  border: none;
+  border-radius: 1em;
+  background-color: var(--maroon);
+  color: white;
+  width: 6em;
+  height: 2.5em;
+  margin: 1.5em;
+}
+.btn_primary:hover {
+  cursor: pointer;
+  border: 0.2em solid gray;
+}
+.span {
+  margin-left: 0.1em;
+}
+.btn_active {
+  border: 0.1em solid var(--maroon);
+  border-radius: 1em;
+  color: black;
+  background-color: white;
+  width: 6em;
+  height: 2.5em;
+  margin: 1.5em;
+}
+.btn_active:hover {
+  cursor: pointer;
+}

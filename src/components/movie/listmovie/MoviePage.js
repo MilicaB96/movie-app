@@ -16,19 +16,18 @@ function MoviePage() {
 
   useEffect(() => {
     dispatch(fetchAllMoviesAction(page, search, genre));
-    // eslint-disable-next-line
   }, [page]);
+
   useEffect(() => {
     setTimeout(() => {
       dispatch(fetchAllMoviesAction(1, search, genre));
     }, 750);
     setPage(1);
-    // eslint-disable-next-line
   }, [search]);
+
   useEffect(() => {
     dispatch(fetchAllMoviesAction(1, null, genre));
     setSearch("");
-    // eslint-disable-next-line
   }, [genre]);
 
   return (
