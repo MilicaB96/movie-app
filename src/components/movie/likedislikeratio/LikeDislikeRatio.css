@@ -12,7 +12,7 @@
   border: 0.2em solid gray;
 }
 .span {
-  margin: 0 4em;
+  margin-left: 0.1em;
 }
 .pressed {
   border: 0.1em solid var(--maroon);

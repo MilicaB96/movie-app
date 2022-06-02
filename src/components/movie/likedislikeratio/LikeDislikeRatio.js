@@ -24,15 +24,15 @@ function LikeDislikeRatio({ movie }) {
       >
         Like
       </button>
+      <span className="span">{movie.get_likes}</span>
       <button
         className={movie.user_disliked_movie ? "pressed" : "removed"}
         onClick={handleDislike}
       >
         Dislike
       </button>
-      <br />
-      <span className="span">{movie.get_likes}</span>
       <span className="span">{movie.get_dislikes}</span>
+      <br />
     </div>
   );
 }
