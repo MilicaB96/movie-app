@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ROUTES from "../../../shared/routes/routes";
 import LikeDislikeMovie from "../likedislikemovie/LikeDislikeMovie";
+import SingleMovieViews from "../singlemovieviews/SingleMovieViews";
 import "./MovieCard.css";
 
 function MovieCard({ movie }) {
@@ -15,6 +16,7 @@ function MovieCard({ movie }) {
       <p className="overflow">{movie.description}</p>
       <img src={movie.cover_image} alt="cover" />
       <LikeDislikeMovie movie={movie} />
+      <SingleMovieViews movie={movie} />
       <hr />
     </div>
   );

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { fecthMovieAction } from "../../../redux/Actions/movie";
 import { selectMovie } from "../../../redux/Selectors/movie";
 import LikeDislikeMovie from "../likedislikemovie/LikeDislikeMovie";
+import SingleMovieViews from "../singlemovieviews/SingleMovieViews";
 import "./SingleMoviePage.css";
 
 function SingleMoviePage() {
@@ -24,8 +25,8 @@ function SingleMoviePage() {
             <h1>{movie.title}</h1>
             <h2>{movie.genre.name}</h2>
             <p>{movie.description}</p>
-          </div>
-          <div>
+            <br />
+            <SingleMovieViews movie={movie} />
             <LikeDislikeMovie movie={movie} />
           </div>
         </div>
