@@ -4,9 +4,9 @@ import {
   dislikeMovieAction,
   likeMovieAction,
 } from "../../../redux/Actions/movie";
-import "./LikeDislikeRatio.css";
+import "./LikeDislikeMovie.css";
 
-function LikeDislikeRatio({ movie }) {
+function LikeDislikeMovie({ movie }) {
   const dispatch = useDispatch();
 
   const handleLike = () => {
@@ -19,14 +19,14 @@ function LikeDislikeRatio({ movie }) {
   return (
     <div>
       <button
-        className={movie.user_liked_movie ? "pressed" : "removed"}
+        className={movie.user_liked_movie ? "btn_active" : "btn_primary"}
         onClick={handleLike}
       >
         Like
       </button>
       <span className="span">{movie.get_likes}</span>
       <button
-        className={movie.user_disliked_movie ? "pressed" : "removed"}
+        className={movie.user_disliked_movie ? "btn_active" : "btn_primary"}
         onClick={handleDislike}
       >
         Dislike
@@ -37,4 +37,4 @@ function LikeDislikeRatio({ movie }) {
   );
 }
 
-export default LikeDislikeRatio;
+export default LikeDislikeMovie;

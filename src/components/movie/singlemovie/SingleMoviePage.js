@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fecthMovieAction } from "../../../redux/Actions/movie";
 import { selectMovie } from "../../../redux/Selectors/movie";
-import LikeDislikeRatio from "../likedislikeratio/LikeDislikeRatio";
+import LikeDislikeMovie from "../likedislikemovie/LikeDislikeMovie";
 import "./SingleMoviePage.css";
 
 function SingleMoviePage() {
@@ -26,7 +26,7 @@ function SingleMoviePage() {
             <p>{movie.description}</p>
           </div>
           <div>
-            <LikeDislikeRatio movie={movie} />
+            <LikeDislikeMovie movie={movie} />
           </div>
         </div>
       )}

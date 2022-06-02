@@ -1,4 +1,4 @@
-.removed {
+.btn_primary {
   border: none;
   border-radius: 1em;
   background-color: var(--maroon);
@@ -7,14 +7,14 @@
   height: 2.5em;
   margin: 1.5em;
 }
-.removed:hover {
+.btn_primary:hover {
   cursor: pointer;
   border: 0.2em solid gray;
 }
 .span {
   margin-left: 0.1em;
 }
-.pressed {
+.btn_active {
   border: 0.1em solid var(--maroon);
   border-radius: 1em;
   color: black;
@@ -22,4 +22,7 @@
   width: 6em;
   height: 2.5em;
   margin: 1.5em;
+}
+.btn_active:hover {
+  cursor: pointer;
 }
