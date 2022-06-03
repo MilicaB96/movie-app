@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fecthMovieAction } from "../../../redux/Actions/movie";
 import { selectMovie } from "../../../redux/Selectors/movie";
+import Comments from "../../comments/Comments";
 import LikeDislikeMovie from "../likedislikemovie/LikeDislikeMovie";
 import SingleMovieViews from "../singlemovieviews/SingleMovieViews";
 import "./SingleMoviePage.css";
@@ -29,6 +30,7 @@ function SingleMoviePage() {
             <SingleMovieViews movie={movie} />
             <LikeDislikeMovie movie={movie} />
           </div>
+          <Comments id={movie.id} />
         </div>
       )}
     </>
