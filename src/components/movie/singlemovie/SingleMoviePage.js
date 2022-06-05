@@ -21,8 +21,8 @@ function SingleMoviePage() {
     <>
       {movie && (
         <div>
-          <div className="single_movie">
-            <img src={movie.cover_image} alt="cover" />
+          <div className='single_movie'>
+            <img src={movie.cover_image} alt='cover' />
             <h1>{movie.title}</h1>
             <h2>{movie.genre.name}</h2>
             <p>{movie.description}</p>
@@ -30,9 +30,9 @@ function SingleMoviePage() {
             <SingleMovieViews movie={movie} />
             <LikeDislikeMovie movie={movie} />
           </div>
-          <Comments id={movie.id} />
         </div>
       )}
+      <Comments id={id} />
     </>
   );
 }

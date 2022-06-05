@@ -12,7 +12,6 @@ export default function commentReducer(state = initialState, action) {
     case types.FETCH_COMMENTS_ERROR:
       return { ...state, errors: action.errors };
     case types.FETCH_COMMENTS_REPLIES_SUCCESS:
-      console.log(" action.comments", action.comments);
       return {
         ...state,
         comments: [...state.comments, ...action.comments],
@@ -20,7 +19,20 @@ export default function commentReducer(state = initialState, action) {
     case types.FETCH_COMMENTS_REPLIES_ERROR:
       return { ...state, errors: action.errors };
     case types.CREATE_COMMENT_SUCCESS:
-      return { ...state, comments: [...state.comments, action.comment] };
+      return action.comment.parent
+        ? {
+            ...state,
+            comments: [
+              ...state.comments?.map?.((comment) => {
+                if (comment.id === action.comment?.parent.id) {
+                  comment.get_number_of_replies += 1;
+                }
+                return comment;
+              }),
+              action.comment,
+            ],
+          }
+        : { ...state, comments: [...state.comments, action.comment] };
     case types.CREATE_COMMENT_ERROR:
       return { ...state, errors: action.errors };
     default:

@@ -1,0 +1,40 @@
+.modal{
+    position: fixed;
+    left:0;
+    top:0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal_body .modal-footer{
+    padding: 10px;
+}
+.modal_content{
+    width: 500px;
+    font-size: 20px;
+    align-items: center;
+    background-color: white;
+}
+.modal_btn{
+    border-radius: 0.5em;
+    border-width: 1px;
+    border-color: lightgray;
+    padding: 5px;
+    margin-bottom: 10px;
+    margin-left:410px;
+    background-color: white;
+}
+.modal_btn:hover {
+    cursor: pointer;
+}
+.comment_btn{
+    border: none;
+    background-color: transparent;
+
+}
+.comment_btn:hover {
+    cursor: pointer;
+}

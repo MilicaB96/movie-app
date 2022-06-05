@@ -13,7 +13,7 @@ function Comments({ id }) {
     dispatch(fetchCommentsAction(id));
   }, []);
   return (
-    <div className="comments">
+    <div className='comments'>
       {comments &&
         comments.map((comment) => (
           <div key={comment.id}>
