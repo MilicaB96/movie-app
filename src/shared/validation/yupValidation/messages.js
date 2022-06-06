@@ -6,4 +6,5 @@ export const INVALID_PASSWORD_ERROR_MESSAGE =
 export const PASSWORD_CONFIRMATION_ERROR_MESSAGE = "Passwords must match";
 export const DROPDOWN_GENRE_ERROR_MESSAGE = "Please select a genre";
 export const TITTLE_ERROR_MESSAGE = "Title is too long";
-export const DESCRIPTION_ERROR_MESSAGE = "Title is too long";
+export const DESCRIPTION_ERROR_MESSAGE = "Description is too long";
+export const COMMENT_ERROR_MESSAGE = "Comment is too long";

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fecthMovieAction } from "../../../redux/Actions/movie";
 import { selectMovie } from "../../../redux/Selectors/movie";
+import Comments from "../../comments/Comments";
 import LikeDislikeMovie from "../likedislikemovie/LikeDislikeMovie";
 import SingleMovieViews from "../singlemovieviews/SingleMovieViews";
 import "./SingleMoviePage.css";
@@ -20,8 +21,8 @@ function SingleMoviePage() {
     <>
       {movie && (
         <div>
-          <div className="single_movie">
-            <img src={movie.cover_image} alt="cover" />
+          <div className='single_movie'>
+            <img src={movie.cover_image} alt='cover' />
             <h1>{movie.title}</h1>
             <h2>{movie.genre.name}</h2>
             <p>{movie.description}</p>
@@ -31,6 +32,7 @@ function SingleMoviePage() {
           </div>
         </div>
       )}
+      <Comments id={id} />
     </>
   );
 }
