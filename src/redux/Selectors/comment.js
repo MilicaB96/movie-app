@@ -11,3 +11,6 @@ export const baseCommentsSelector = () =>
   createSelector(selectComments, (comments) => {
     return comments?.filter?.((comment) => !comment.parent);
   });
+
+export const selectIsNext = (state) => state.comment.isNext;
+export const selectIsReplyNext = (state) => state.comment.isReplyNext;

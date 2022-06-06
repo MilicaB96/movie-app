@@ -5,16 +5,18 @@ const ENDPOINTS = {
   REPLIES: "/replies/",
 };
 class CommentService extends ApiService {
-  getMovieComments = async (id) => {
+  getMovieComments = async (id, page) => {
     const data = await this.client.get(
-      `${ENDPOINTS.MOVIE}${id}${ENDPOINTS.COMMENTS}`
+      `${ENDPOINTS.MOVIE}${id}${ENDPOINTS.COMMENTS}`,
+      { params: { page } }
     );
     return data.data;
   };
 
-  getCommentReplies = async (id, parent_id) => {
+  getCommentReplies = async (id, parent_id, page) => {
     const data = await this.client.get(
-      `${ENDPOINTS.MOVIE}${id}${ENDPOINTS.COMMENTS}${parent_id}${ENDPOINTS.REPLIES}`
+      `${ENDPOINTS.MOVIE}${id}${ENDPOINTS.COMMENTS}${parent_id}${ENDPOINTS.REPLIES}`,
+      { params: { page } }
     );
     return data.data;
   };

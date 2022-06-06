@@ -10,23 +10,26 @@ import {
 } from "../Actions/comment";
 import * as types from "../Constants/comment";
 
-export function* fetchComments({ id }) {
+export function* fetchComments({ id, page }) {
   try {
-    const comments = yield call(CommentService.getMovieComments, id);
-    yield put(fetchCommentsSuccess(comments));
+    const comments = yield call(CommentService.getMovieComments, id, page);
+    yield put(fetchCommentsSuccess(comments.results, Boolean(comments.next)));
   } catch (error) {
     yield put(fetchCommentsError(error));
   }
 }
 
-export function* fetchCommentReplies({ id, parent_id }) {
+export function* fetchCommentReplies({ id, parent_id, page }) {
   try {
     const comments = yield call(
       CommentService.getCommentReplies,
       id,
-      parent_id
+      parent_id,
+      page
     );
-    yield put(fetchCommentsRepliesSuccess(comments));
+    yield put(
+      fetchCommentsRepliesSuccess(comments.results, Boolean(comments.next))
+    );
   } catch (error) {
     yield put(fetchCommentsRepliesError(error));
   }

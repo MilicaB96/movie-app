@@ -1,12 +1,14 @@
 import * as types from "../Constants/comment";
-export const fetchCommentsAction = (id) => ({
+export const fetchCommentsAction = (id, page = 1) => ({
   type: types.FETCH_COMMENTS,
   id,
+  page,
 });
 
-export const fetchCommentsSuccess = (comments) => ({
+export const fetchCommentsSuccess = (comments, next) => ({
   type: types.FETCH_COMMENTS_SUCCESS,
   comments,
+  next,
 });
 
 export const fetchCommentsError = (errors) => ({
@@ -14,15 +16,17 @@ export const fetchCommentsError = (errors) => ({
   errors,
 });
 
-export const fetchCommentsRepliesAction = (id, parent_id) => ({
+export const fetchCommentsRepliesAction = (id, parent_id, page) => ({
   type: types.FETCH_COMMENTS_REPLIES,
   id,
   parent_id,
+  page,
 });
 
-export const fetchCommentsRepliesSuccess = (comments) => ({
+export const fetchCommentsRepliesSuccess = (comments, next) => ({
   type: types.FETCH_COMMENTS_REPLIES_SUCCESS,
   comments,
+  next,
 });
 
 export const fetchCommentsRepliesError = (errors) => ({
