@@ -13,7 +13,7 @@ function CommentCard({ comment }) {
   const isNext = useSelector(selectIsReplyNext);
   const [activated, setActivated] = useState(true);
   const [showModal, setShowModal] = useState(false);
-  const [page, setPage] = useState(2);
+  const [page, setPage] = useState(1);
 
   const handleModal = () => {
     setShowModal(true);
@@ -22,9 +22,9 @@ function CommentCard({ comment }) {
     dispatch(fetchCommentsRepliesAction(comment.movie.id, parent_id));
     setActivated(!activated);
   };
-  const handleLoadMore = (parent_id) => {
+  const handleLoadMore = (parent_id, page) => {
     dispatch(fetchCommentsRepliesAction(comment.movie.id, parent_id, page));
-    setPage(page + 1);
+    setPage(page);
   };
   return (
     <div className="comment_card">
@@ -53,7 +53,7 @@ function CommentCard({ comment }) {
           <button
             className="load_btn"
             type="button"
-            onClick={() => handleLoadMore(comment.id)}
+            onClick={() => handleLoadMore(comment.id, page + 1)}
           >
             Load More
           </button>
