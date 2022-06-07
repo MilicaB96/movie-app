@@ -6,6 +6,8 @@ import PageNavigation from "../../pageNavigation/PageNavigation";
 import MovieCard from "../moviecard/MovieCard";
 import MovieFilter from "../moviefilter/MovieFilter";
 import MovieSearch from "../moviesearch/MovieSearch";
+import MovieWatched from "../moviewatched/MovieWatched";
+import WatchListBtn from "../watchlistbutton/WatchListBtn";
 
 function MoviePage() {
   const dispatch = useDispatch();
@@ -29,7 +31,6 @@ function MoviePage() {
     dispatch(fetchAllMoviesAction(1, null, genre));
     setSearch("");
   }, [genre]);
-
   return (
     <div>
       <MovieSearch search={search} setSearch={setSearch} />
@@ -37,7 +38,12 @@ function MoviePage() {
       {movies && movies.length ? (
         <>
           {movies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
+            <div key={movie.id}>
+              <WatchListBtn movie={movie} />
+              <br />
+              {movie.user_watched && <MovieWatched />}
+              <MovieCard key={movie.id} movie={movie} />
+            </div>
           ))}
           <PageNavigation setPage={setPage} page={page} />
         </>

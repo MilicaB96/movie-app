@@ -1,0 +1,14 @@
+.watchlist_btn_div {
+  position: relative;
+  left: 40%;
+  top: 3em;
+}
+.watchlist_btn {
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+}
+.watchlist_btn:hover {
+  cursor: pointer;
+  color: gray;
+}

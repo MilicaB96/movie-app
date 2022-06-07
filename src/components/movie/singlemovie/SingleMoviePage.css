@@ -19,3 +19,6 @@
   height: 40%;
   object-fit: cover;
 }
+.single_movie div {
+  margin: 2em;
+}

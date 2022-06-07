@@ -5,6 +5,7 @@ import ROUTES from "../../shared/routes/routes";
 import CreateMoviePage from "../movie/createmovie/CreateMoviePage";
 import MoviePage from "../movie/listmovie/MoviePage";
 import SingleMoviePage from "../movie/singlemovie/SingleMoviePage";
+import WatchListPage from "../movie/watchlist/WatchListPage";
 
 function HomePage() {
   return (
@@ -21,6 +22,7 @@ function HomePage() {
         path={ROUTES.SINGLE_MOVIE}
         component={SingleMoviePage}
       />
+      <PrivateRoute exact path={ROUTES.WATCH_LIST} component={WatchListPage} />
     </div>
   );
 }

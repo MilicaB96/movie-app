@@ -5,5 +5,6 @@ const ROUTES = {
   MOVIE_LIST: "/dashboard/movies",
   CREATE_MOVIE: "/dashboard/create",
   SINGLE_MOVIE: "/dashboard/movies/:id",
+  WATCH_LIST: "/dashboard/watchlist",
 };
 export default ROUTES;
