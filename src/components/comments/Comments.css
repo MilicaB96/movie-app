@@ -30,3 +30,14 @@ textarea {
 .create_btn:hover {
   cursor: pointer;
 }
+
+.load_btn {
+  font-size: 20px;
+  border: none;
+  background-color: transparent;
+  margin: 1em 45%;
+}
+.load_btn:hover {
+  cursor: pointer;
+  color: var(--maroon);
+}
