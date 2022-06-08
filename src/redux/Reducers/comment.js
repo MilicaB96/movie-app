@@ -14,7 +14,7 @@ export default function commentReducer(state = initialState, action) {
         ...state,
         comments: !!action.comments.length
           ? state.comments.some(
-              (comment) => comment.movie.id !== action.comments[0].movie.id
+              (comment) => comment.id !== action.comments[0].id
             )
             ? action.comments
             : [...state.comments, ...action.comments]

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ROUTES from "../../../shared/routes/routes";
 import LikeDislikeMovie from "../likedislikemovie/LikeDislikeMovie";
 import SingleMovieViews from "../singlemovieviews/SingleMovieViews";
+import MovieWatched from "../moviewatched/MovieWatched";
 import "./MovieCard.css";
 
 function MovieCard({ movie }) {
@@ -15,9 +16,9 @@ function MovieCard({ movie }) {
       </h1>
       <p className="overflow">{movie.description}</p>
       <img src={movie.cover_image} alt="cover" />
-      <LikeDislikeMovie movie={movie} />
-      <SingleMovieViews movie={movie} />
-      <hr />
+      <LikeDislikeMovie className="ratio" movie={movie} />
+      {movie.user_watched && <MovieWatched />}
+      <SingleMovieViews className="views" movie={movie} />
     </div>
   );
 }

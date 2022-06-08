@@ -1,7 +1,5 @@
 .watchlist_btn_div {
-  position: relative;
-  left: 40%;
-  top: 3em;
+  margin-bottom: 1em;
 }
 .watchlist_btn {
   border: none;

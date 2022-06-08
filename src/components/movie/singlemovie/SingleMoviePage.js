@@ -22,19 +22,18 @@ function SingleMoviePage() {
   return (
     <>
       {movie && (
-        <div>
-          <div className="single_movie">
-            <div>
-              <WatchListBtn movie={movie} />
-            </div>
-            <img src={movie.cover_image} alt="cover" />
+        <div className="single_movie">
+          <div>
             <h1>{movie.title}</h1>
             <h2>{movie.genre.name}</h2>
-            <p>{movie.description}</p>
-            <br />
             {movie.user_watched && <MovieWatched />}
+          </div>
+          <img src={movie.cover_image} alt="cover" />
+          <div>
+            <p>{movie.description}</p>
             <SingleMovieViews movie={movie} />
             <LikeDislikeMovie movie={movie} />
+            <WatchListBtn movie={movie} />
           </div>
         </div>
       )}

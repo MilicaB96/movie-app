@@ -67,8 +67,9 @@ function CreateMoviePage() {
               />
               <ValidationError name="cover_image" />
               <br />
-              <p>Choose a genre: </p>
+              <p>Choose a genre</p>
               <Field as="select" className="select" name="genre">
+                <option value={null}></option>
                 {genres &&
                   genres.map((genre) => (
                     <option key={genre.id} value={genre.id}>

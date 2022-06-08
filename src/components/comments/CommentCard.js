@@ -44,7 +44,6 @@ function CommentCard({ comment }) {
             hide replays
           </button>
         ))}
-      <hr />
       <div className="comment_replies">
         {commentReplies &&
           !activated &&

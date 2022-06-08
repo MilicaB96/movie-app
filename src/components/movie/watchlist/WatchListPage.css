@@ -1,31 +1,15 @@
-.btn_watched {
-  position: relative;
-  left: 40%;
-  top: 3em;
+.btn {
+  display: block;
   border-radius: 0.5em;
   background-color: var(--maroon);
-  padding: 1em;
+  padding: 0.5em;
+  margin: 0.5em;
+  width: 100%;
   border: none;
   color: white;
   font-size: 15px;
 }
-.btn_watched:hover {
-  cursor: pointer;
-  background-color: transparent;
-  color: black;
-}
-.btn_remove {
-  position: relative;
-  right: 40%;
-  top: 3em;
-  border-radius: 0.5em;
-  background-color: var(--maroon);
-  padding: 1em;
-  border: none;
-  color: white;
-  font-size: 15px;
-}
-.btn_remove:hover {
+.btn:hover {
   cursor: pointer;
   background-color: transparent;
   color: black;

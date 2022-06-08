@@ -24,24 +24,21 @@ function WatchListPage() {
     dispatch(deleteFromWatchListAction(id));
   };
   return (
-    <div>
+    <div className="movie_container">
       {watchlist &&
         watchlist.map((item) => (
           <div key={item.movie.id}>
-            <button
-              onClick={() => handleWatched(item.id)}
-              className="btn_watched"
-            >
+            <MovieCard movie={item.movie} />
+            <button onClick={() => handleWatched(item.id)} className="btn">
               {item.watched ? "Unmark as watched" : "Mark as Watched"}
             </button>
             <button
               type="button"
-              className="btn_remove"
+              className="btn"
               onClick={() => handleDelete(item.id)}
             >
               Remove from Watchlist
             </button>
-            <MovieCard movie={item.movie} />
           </div>
         ))}
     </div>
