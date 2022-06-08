@@ -5,7 +5,9 @@ import { fecthMovieAction } from "../../../redux/Actions/movie";
 import { selectMovie } from "../../../redux/Selectors/movie";
 import Comments from "../../comments/Comments";
 import LikeDislikeMovie from "../likedislikemovie/LikeDislikeMovie";
+import MovieWatched from "../moviewatched/MovieWatched";
 import SingleMovieViews from "../singlemovieviews/SingleMovieViews";
+import WatchListBtn from "../watchlistbutton/WatchListBtn";
 import "./SingleMoviePage.css";
 
 function SingleMoviePage() {
@@ -20,15 +22,18 @@ function SingleMoviePage() {
   return (
     <>
       {movie && (
-        <div>
-          <div className='single_movie'>
-            <img src={movie.cover_image} alt='cover' />
+        <div className="single_movie">
+          <div>
             <h1>{movie.title}</h1>
             <h2>{movie.genre.name}</h2>
+            {movie.user_watched && <MovieWatched />}
+          </div>
+          <img src={movie.cover_image} alt="cover" />
+          <div>
             <p>{movie.description}</p>
-            <br />
             <SingleMovieViews movie={movie} />
             <LikeDislikeMovie movie={movie} />
+            <WatchListBtn movie={movie} />
           </div>
         </div>
       )}

@@ -3,6 +3,8 @@ const ENDPOINTS = {
   MOVIE: "/movie/",
   LIKE: "/like/",
   DISLIKE: "/dislike/",
+  WATCHLIST: "/watchlist/",
+  WATCHED: "/watched/",
 };
 class MovieService extends ApiService {
   createMovie = async (movie) => {
@@ -30,6 +32,32 @@ class MovieService extends ApiService {
       `${ENDPOINTS.MOVIE}${id}${ENDPOINTS.DISLIKE}`
     );
     return data.data;
+  };
+
+  toggleWatchList = async (id) => {
+    const data = await this.client.patch(
+      `${ENDPOINTS.MOVIE}${id}${ENDPOINTS.WATCHLIST}`
+    );
+    return data.data;
+  };
+
+  toggleWatched = async (id) => {
+    const data = await this.client.patch(
+      `${ENDPOINTS.WATCHLIST}${id}${ENDPOINTS.WATCHED}`
+    );
+    return data.data;
+  };
+
+  getWatchList = async (page) => {
+    const data = await this.client.get(ENDPOINTS.WATCHLIST, {
+      params: { page },
+    });
+    return data.data;
+  };
+
+  deleteFromWatchList = async (id) => {
+    const data = await this.client.delete(`${ENDPOINTS.WATCHLIST}${id}/`);
+    return data;
   };
 }
 

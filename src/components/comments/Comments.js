@@ -25,6 +25,8 @@ function Comments({ id }) {
 
   return (
     <div className="comments">
+      <h3>Comments:</h3>
+      <hr />
       {comments &&
         comments.map((comment) => (
           <div key={comment.id}>
@@ -44,7 +46,6 @@ function Comments({ id }) {
           Load More
         </button>
       )}
-      <hr />
       <CreateComment id={id} />
     </div>
   );

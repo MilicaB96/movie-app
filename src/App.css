@@ -102,7 +102,19 @@ h1 {
   color: var(--maroon);
   background-color: whitesmoke;
 }
-.notfound {
+.movie_notfound {
   margin: 5em;
   font-size: 30px;
+}
+.movie_container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: none;
+  margin-top: 5em;
+  padding: none;
+  justify-content: space-evenly;
+}
+.movie_item {
+  border: solid;
+  margin: 1em;
 }

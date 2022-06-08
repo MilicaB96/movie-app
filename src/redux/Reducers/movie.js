@@ -8,6 +8,7 @@ const initialState = {
     isNext: false,
   },
   movie: null,
+  watchlist: [],
 };
 
 export default function movieReducer(state = initialState, action) {
@@ -42,6 +43,14 @@ export default function movieReducer(state = initialState, action) {
             return movie;
           }),
         ],
+        watchlist: [
+          ...state?.watchlist?.map((item) => {
+            if (item.movie.id === action.movie.id) {
+              item.movie = action.movie;
+            }
+            return item;
+          }),
+        ],
         movie: action.movie,
       };
     case types.LIKE_MOVIE_ERROR:
@@ -57,10 +66,71 @@ export default function movieReducer(state = initialState, action) {
             return movie;
           }),
         ],
+        watchlist: [
+          ...state?.watchlist?.map((item) => {
+            if (item.movie.id === action.movie.id) {
+              item.movie = action.movie;
+            }
+            return item;
+          }),
+        ],
         movie: action.movie,
       };
     case types.DISLIKE_MOVIE_ERROR:
       return { ...state };
+    case types.TOGGLE_WATCHLIST_SUCCESS:
+      return {
+        ...state,
+        movies: [
+          ...state.movies?.map?.((movie) => {
+            if (movie.id === action.movie.id) {
+              movie = action.movie;
+            }
+            return movie;
+          }),
+        ],
+        movie: action.movie,
+      };
+    case types.TOGGLE_WATCHLIST_ERROR:
+      return { ...state, error: action.message };
+    case types.TOGGLE_WATCHED_SUCCESS:
+      return {
+        ...state,
+        watchlist: [
+          ...state?.watchlist?.map((item) => {
+            if (item.id === action.movie.id) {
+              item.watched = action.movie.watched;
+            }
+            return item;
+          }),
+        ],
+      };
+    case types.TOGGLE_WATCHED_ERROR:
+      return { ...state, error: action.message };
+    case types.FETCH_WATCHLIST_SUCCESS:
+      return {
+        ...state,
+        watchlist: action.movies,
+        paginationState: {
+          isPrev: action.isPrev,
+          isNext: action.isNext,
+        },
+      };
+    case types.FETCH_WATCHLIST_ERROR:
+      return {
+        ...state,
+        error: action.message,
+      };
+    case types.DELETE_FROM_WATCHLIST_SUCCESS:
+      return {
+        ...state,
+        watchlist: [...state.watchlist?.filter((item) => item.id != action.id)],
+      };
+    case types.DELETE_FROM_WATCHLIST_ERROR:
+      return {
+        ...state,
+        error: action.message,
+      };
     default:
       return state;
   }

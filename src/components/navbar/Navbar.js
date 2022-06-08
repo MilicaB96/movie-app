@@ -19,6 +19,9 @@ function Navbar() {
       <Link className="link" to={ROUTES.CREATE_MOVIE}>
         Add Movie
       </Link>
+      <Link className="link" to={ROUTES.WATCH_LIST}>
+        Watch List
+      </Link>
       <button onClick={handleLogout} className="logout" type="submit">
         Logout
       </button>

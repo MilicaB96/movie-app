@@ -69,6 +69,58 @@ export const dislikeMovieSuccess = (movie) => ({
   type: types.DISLIKE_MOVIE_SUCCESS,
   movie,
 });
+
 export const dislikeMovieError = () => ({
   type: types.DISLIKE_MOVIE_ERROR,
+});
+
+export const toggleWatchListAction = (id) => ({
+  type: types.TOGGLE_WATCHLIST,
+  id,
+});
+export const toggleWatchListSuccess = (movie) => ({
+  type: types.TOGGLE_WATCHLIST_SUCCESS,
+  movie,
+});
+export const toggleWatchListError = (message) => ({
+  type: types.TOGGLE_WATCHLIST_ERROR,
+  message,
+});
+
+export const fetchWatchListAction = () => ({
+  type: types.FETCH_WATCHLIST,
+});
+export const fetchWatchListSuccess = (movies, isPrev, isNext) => ({
+  type: types.FETCH_WATCHLIST_SUCCESS,
+  movies,
+});
+export const fetchWatchListError = (message) => ({
+  type: types.FETCH_WATCHLIST_ERROR,
+  message,
+});
+
+export const toggleWatchedAction = (id) => ({
+  type: types.TOGGLE_WATCHED,
+  id,
+});
+export const toggleWatchedSuccess = (movie) => ({
+  type: types.TOGGLE_WATCHED_SUCCESS,
+  movie,
+});
+export const toggleWatchedError = (message) => ({
+  type: types.TOGGLE_WATCHED_ERROR,
+  message,
+});
+
+export const deleteFromWatchListAction = (id) => ({
+  type: types.DELETE_FROM_WATCHLIST,
+  id,
+});
+export const deleteFromWatchListSuccess = (id) => ({
+  type: types.DELETE_FROM_WATCHLIST_SUCCESS,
+  id,
+});
+export const deleteFromWatchListError = (message) => ({
+  type: types.DELETE_FROM_WATCHLIST_ERROR,
+  message,
 });
