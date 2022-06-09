@@ -10,7 +10,9 @@ const CREATE_MOVIE_SCHEMA = Yup.object().shape({
     .required(msg.REQUIRED_ERROR_MESSAGE)
     .max(c.UPPER_CHARCTER_LIMIT_FOR_TEXT, msg.DESCRIPTION_ERROR_MESSAGE),
   cover_image: Yup.mixed().required(msg.REQUIRED_ERROR_MESSAGE),
-  genre: Yup.number("Pls choose a genre").required(msg.REQUIRED_ERROR_MESSAGE),
+  genre: Yup.number()
+    .typeError(msg.REQUIRED_ERROR_MESSAGE)
+    .required(msg.REQUIRED_ERROR_MESSAGE),
 });
 
 export default CREATE_MOVIE_SCHEMA;

@@ -13,9 +13,8 @@ function MovieFilter({ genre, setGenre }) {
   }, []);
   return (
     <div className="filter">
-      <p>Choose a genre to filter by</p>
       <select name="genre" onChange={(e) => setGenre(e.target.value)}>
-        <option value={null}></option>
+        <option value={"default"}>Genre Filter</option>
         {genres &&
           genres.map((genre) => (
             <option key={genre.id} value={genre.id}>

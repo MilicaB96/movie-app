@@ -2,14 +2,28 @@
   text-align: center;
   margin: 5em;
 }
+.create h1 {
+  margin: 1em;
+}
+.field {
+  border-width: 1px;
+  width: 60%;
+  height: 3em;
+  font-size: 15px;
+  padding-left: 1em;
+  border: 0.5px solid rgb(103, 105, 107);
+  border-radius: 15px;
+}
 .image {
   margin: 1em;
 }
 .select {
-  margin-bottom: 1em;
+  text-align: center;
   width: 30%;
+  border: 0.5px solid rgb(103, 105, 107);
   border-radius: 0.5em;
   height: 2em;
+  font-size: 15px;
   outline: none;
 }
 ::-webkit-file-upload-button {
@@ -19,4 +33,7 @@
   padding: 0.8em;
   border: none;
   border-radius: 0.5em;
+}
+.form > * {
+  margin: 1em;
 }

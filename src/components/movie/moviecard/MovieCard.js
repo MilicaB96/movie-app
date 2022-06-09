@@ -16,8 +16,11 @@ function MovieCard({ movie }) {
       </h1>
       <p className="overflow">{movie.description}</p>
       <img src={movie.cover_image} alt="cover" />
-      <LikeDislikeMovie className="ratio" movie={movie} />
-      {movie.user_watched && <MovieWatched />}
+      <hr />
+      <div className="movie_settings">
+        <LikeDislikeMovie className="ratio" movie={movie} />
+        {movie.user_watched && <MovieWatched />}
+      </div>
       <SingleMovieViews className="views" movie={movie} />
     </div>
   );

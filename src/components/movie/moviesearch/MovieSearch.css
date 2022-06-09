@@ -1,11 +1,15 @@
 .search {
-  text-align: justify;
+  text-align: center;
+  display: inline;
 }
 .search input {
   margin-left: 1em;
-  width: 30%;
-  height: 2em;
-  border-width: 0.2em;
-  border-color: black;
+  width: 60%;
+  height: 3em;
+  font-size: 15px;
+  padding-left: 1em;
+  border: 0.5px solid rgb(103, 105, 107);
+  border-radius: 15px;
   outline: none;
+  box-shadow: 5px 5px 5px rgb(207, 210, 214);
 }
