@@ -1,24 +1,13 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchPopularMoviesAction } from "../../redux/Actions/movie";
-import { selectPopularMovies } from "../../redux/Selectors/movie";
-import ROUTES from "../../shared/routes/routes";
+import React from "react";
+import MovieTitleList from "./MovieTitleList";
 
-function Sidebar() {
-  const dispatch = useDispatch();
-  const movies = useSelector(selectPopularMovies);
-  useEffect(() => {
-    dispatch(fetchPopularMoviesAction());
-  }, []);
+function Sidebar({ movies }) {
   return (
     <div className="sidebar">
       {movies &&
         movies.map((movie) => (
           <div>
-            <Link className="link" to={`${ROUTES.MOVIE_LIST}/${movie.id}`}>
-              <h1>{movie.title}</h1>
-            </Link>
+            <MovieTitleList title={movie.title} id={movie.id} />
             <hr className="shorter_hr" />
           </div>
         ))}
