@@ -118,3 +118,25 @@ h1 {
   border: solid;
   margin: 1em;
 }
+.container {
+  display: flex;
+}
+.sidebar {
+  height: 100%;
+  width: 100vw;
+  position: -webkit-sticky;
+  position: sticky;
+  border-right: solid;
+  top: 0;
+}
+.sidebar h1 {
+  font-size: 15px;
+  padding: 0.5em;
+}
+.sidebar h1:hover {
+  color: gray;
+}
+.shorter_hr {
+  width: 80%;
+  margin-left: 10%;
+}

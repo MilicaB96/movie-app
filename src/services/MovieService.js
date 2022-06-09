@@ -5,6 +5,7 @@ const ENDPOINTS = {
   DISLIKE: "/dislike/",
   WATCHLIST: "/watchlist/",
   WATCHED: "/watched/",
+  POPULAR: "/popular-movies/",
 };
 class MovieService extends ApiService {
   createMovie = async (movie) => {
@@ -58,6 +59,11 @@ class MovieService extends ApiService {
   deleteFromWatchList = async (id) => {
     const data = await this.client.delete(`${ENDPOINTS.WATCHLIST}${id}/`);
     return data;
+  };
+
+  getPopularMovies = async () => {
+    const data = await this.client.get(ENDPOINTS.POPULAR);
+    return data.data;
   };
 }
 

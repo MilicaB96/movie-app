@@ -22,14 +22,14 @@ function LikeDislikeMovie({ movie }) {
         className={movie.user_liked_movie ? "btn_active" : "btn_primary"}
         onClick={handleLike}
       >
-        <span class="material-symbols-outlined">thumb_up</span>
+        <span className="material-symbols-outlined">thumb_up</span>
       </button>
       <span className="span">{movie.get_likes}</span>
       <button
         className={movie.user_disliked_movie ? "btn_active" : "btn_primary"}
         onClick={handleDislike}
       >
-        <span class="material-symbols-outlined">thumb_down</span>
+        <span className="material-symbols-outlined">thumb_down</span>
       </button>
       <span className="span">{movie.get_dislikes}</span>
       <br />

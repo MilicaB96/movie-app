@@ -124,3 +124,14 @@ export const deleteFromWatchListError = (message) => ({
   type: types.DELETE_FROM_WATCHLIST_ERROR,
   message,
 });
+export const fetchPopularMoviesAction = () => ({
+  type: types.FETCH_POPULAR_MOVIES,
+});
+export const fetchPopularMoviesSuccess = (movies) => ({
+  type: types.FETCH_POPULAR_MOVIES_SUCCESS,
+  movies,
+});
+export const fetchPopularMoviesError = (message) => ({
+  type: types.FETCH_POPULAR_MOVIES_ERROR,
+  message,
+});

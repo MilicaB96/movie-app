@@ -9,6 +9,7 @@ const initialState = {
   },
   movie: null,
   watchlist: [],
+  popularMovies: [],
 };
 
 export default function movieReducer(state = initialState, action) {
@@ -131,6 +132,10 @@ export default function movieReducer(state = initialState, action) {
         ...state,
         error: action.message,
       };
+    case types.FETCH_POPULAR_MOVIES_SUCCESS:
+      return { ...state, popularMovies: action.movies };
+    case types.FETCH_POPULAR_MOVIES_ERROR:
+      return { ...state, error: action.message };
     default:
       return state;
   }
