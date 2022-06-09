@@ -6,6 +6,7 @@ const ENDPOINTS = {
   WATCHLIST: "/watchlist/",
   WATCHED: "/watched/",
   POPULAR: "/popular-movies/",
+  RELATED: "/related-movies/",
 };
 class MovieService extends ApiService {
   createMovie = async (movie) => {
@@ -63,6 +64,12 @@ class MovieService extends ApiService {
 
   getPopularMovies = async () => {
     const data = await this.client.get(ENDPOINTS.POPULAR);
+    return data.data;
+  };
+  getRelatedMovies = async (genre) => {
+    const data = await this.client.get(ENDPOINTS.RELATED, {
+      params: { genre },
+    });
     return data.data;
   };
 }

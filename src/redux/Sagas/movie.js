@@ -14,6 +14,8 @@ import {
   fetchMovieSuccess,
   fetchPopularMoviesError,
   fetchPopularMoviesSuccess,
+  fetchRelatedMoviesError,
+  fetchRelatedMoviesSuccess,
   fetchWatchListError,
   fetchWatchListSuccess,
   likeMovieError,
@@ -125,6 +127,15 @@ export function* fetchPopularMovies() {
   }
 }
 
+export function* fetchRelatedMovies({ genre }) {
+  try {
+    const movies = yield call(MovieService.getRelatedMovies, genre);
+    yield put(fetchRelatedMoviesSuccess(movies));
+  } catch (error) {
+    yield put(fetchRelatedMoviesError(error));
+  }
+}
+
 export default function* watchMovies() {
   yield takeLatest(types.CREATE_MOVIE, createMovie);
   yield takeLatest(types.FETCH_ALL_MOVIES, fetchMovies);
@@ -136,4 +147,5 @@ export default function* watchMovies() {
   yield takeLatest(types.FETCH_WATCHLIST, fetchWatchList);
   yield takeLatest(types.DELETE_FROM_WATCHLIST, deleteFromWatchList);
   yield takeLatest(types.FETCH_POPULAR_MOVIES, fetchPopularMovies);
+  yield takeLatest(types.FETCH_RELATED_MOVIES, fetchRelatedMovies);
 }
