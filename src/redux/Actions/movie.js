@@ -135,3 +135,16 @@ export const fetchPopularMoviesError = (message) => ({
   type: types.FETCH_POPULAR_MOVIES_ERROR,
   message,
 });
+
+export const fetchRelatedMoviesAction = (genre) => ({
+  type: types.FETCH_RELATED_MOVIES,
+  genre,
+});
+export const fetchRelatedMoviesSuccess = (movies) => ({
+  type: types.FETCH_RELATED_MOVIES_SUCCESS,
+  movies,
+});
+export const fetchRelatedMoviesError = (message) => ({
+  type: types.FETCH_RELATED_MOVIES_ERROR,
+  message,
+});
