@@ -44,7 +44,7 @@ function SingleMoviePage() {
               <h1>{movie.title}</h1>
               <h2>{movie.genre.name}</h2>
             </div>
-            <img src={movie.cover_image} alt="cover" />
+            <img src={movie.full_image} alt="cover" />
             <div className="single_movie_right">
               <p>{movie.description}</p>
               <div>{movie.user_watched && <MovieWatched />}</div>

@@ -13,16 +13,26 @@
 .movie .link {
   font-size: 20px;
 }
-
-.movie img {
-  display: block;
-  margin: 1em;
-  margin-left: 25%;
-  width: 50%;
-  height: 50%;
-  object-fit: cover;
+.movie_content {
+  display: flex;
+  height: 200px;
 }
 .movie_settings {
   display: flex;
   justify-content: center;
+}
+.movie img {
+  height: 200px;
+  width: 130px;
+  object-fit: cover;
+}
+.movie_image_container {
+  display: block;
+}
+.movie p {
+  margin: 1em;
+  text-align: start;
+}
+.movie_description_contailer {
+  display: block;
 }
