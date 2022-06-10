@@ -64,9 +64,7 @@ function MoviePage() {
             <PageNavigation setPage={setPage} page={page} />
           </div>
         ) : (
-          <p className="movie_notfound">
-            There are no movies here by that title
-          </p>
+          <p className="movie_notfound">There are no movies here</p>
         )}
       </div>
     </div>

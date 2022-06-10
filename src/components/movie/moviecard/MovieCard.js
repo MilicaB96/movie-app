@@ -14,8 +14,14 @@ function MovieCard({ movie }) {
           {movie.title}
         </Link>
       </h1>
-      <p className="overflow">{movie.description}</p>
-      <img src={movie.cover_image} alt="cover" />
+      <div className="movie_content">
+        <div className="movie_image_container">
+          <img src={movie.thumbnail} alt="cover" />
+        </div>
+        <div className="movie_description_container">
+          <p className="overflow">{movie.description}</p>
+        </div>
+      </div>
       <hr />
       <div className="movie_settings">
         <LikeDislikeMovie className="ratio" movie={movie} />

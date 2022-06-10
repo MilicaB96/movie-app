@@ -26,7 +26,7 @@ function WatchListPage() {
   };
   return (
     <div className="movie_container">
-      {watchlist &&
+      {watchlist.legth ? (
         watchlist.map((item) => (
           <div key={item.movie.id} className="movie_item">
             <MovieCard movie={item.movie} />
@@ -41,7 +41,10 @@ function WatchListPage() {
               Remove from Watchlist
             </button>
           </div>
-        ))}
+        ))
+      ) : (
+        <p className="movie_notfound">Your watchlist is empty</p>
+      )}
     </div>
   );
 }
