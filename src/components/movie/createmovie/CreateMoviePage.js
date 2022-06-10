@@ -26,7 +26,7 @@ function CreateMoviePage() {
     dispatch(createMovieAction(formData, history));
   };
   return (
-    <div className="create">
+    <div className="create page_container">
       <h1>Input your Movie</h1>
       <div>
         <Formik
@@ -39,7 +39,7 @@ function CreateMoviePage() {
           validationSchema={CREATE_MOVIE_SCHEMA}
           onSubmit={handleSubmit}
         >
-          {({ setFieldValue }) => (
+          {({ setFieldValue, isSubmitting }) => (
             <Form className="form">
               <Field
                 className="field"
@@ -67,9 +67,8 @@ function CreateMoviePage() {
               />
               <ValidationError name="cover_image" />
               <br />
-              <p>Choose a genre</p>
               <Field as="select" className="select" name="genre">
-                <option value={null}></option>
+                <option value={null}>Choose a genre</option>
                 {genres &&
                   genres.map((genre) => (
                     <option key={genre.id} value={genre.id}>
@@ -79,7 +78,10 @@ function CreateMoviePage() {
               </Field>
               <ValidationError name="genre" />
               <br />
-              <button type="submit">Add</button>
+              <button disabled={isSubmitting} type="submit">
+                Add
+              </button>
+              {isSubmitting && <div>Creating movie...</div>}
             </Form>
           )}
         </Formik>

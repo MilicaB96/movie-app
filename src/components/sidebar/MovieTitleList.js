@@ -6,7 +6,7 @@ function MovieTitleList({ title, id }) {
   return (
     <div>
       <Link className="link" to={`${ROUTES.MOVIE_LIST}/${id}`}>
-        <h1>{title}</h1>
+        <h1 className="sidebar_item">{title}</h1>
       </Link>
     </div>
   );

@@ -38,15 +38,19 @@ function MoviePage() {
   }, [search]);
 
   useEffect(() => {
-    dispatch(fetchAllMoviesAction(1, null, genre));
-    setSearch("");
+    if (genre != "default") {
+      dispatch(fetchAllMoviesAction(1, null, genre));
+      setSearch("");
+    } else {
+      dispatch(fetchAllMoviesAction(1));
+    }
   }, [genre]);
   return (
-    <div>
-      <MovieSearch search={search} setSearch={setSearch} />
-      <MovieFilter genre={genre} setGenre={setGenre} />
-      <div className="container">
-        <Sidebar movies={popularMovies} />
+    <div className="page_container container">
+      <Sidebar movies={popularMovies} title={"Popular Movies"} />
+      <div className="content">
+        <MovieSearch search={search} setSearch={setSearch} />
+        <MovieFilter genre={genre} setGenre={setGenre} />
         {movies && movies.length ? (
           <div>
             <div className="movie_container">

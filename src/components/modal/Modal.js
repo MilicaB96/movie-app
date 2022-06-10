@@ -6,9 +6,9 @@ function Modal({ show, setShow, movieId, parent }) {
   return (
     <>
       {show && (
-        <div className='modal'>
-          <div className='modal_content'>
-            <div className='modal_body'>
+        <div className="modal">
+          <div className="modal_content">
+            <div className="modal_body">
               <CreateComment
                 show={show}
                 setShow={setShow}
@@ -16,8 +16,8 @@ function Modal({ show, setShow, movieId, parent }) {
                 parent={parent}
               />
             </div>
-            <div className='modal_footer'>
-              <button className='modal_btn' onClick={() => setShow(!show)}>
+            <div className="modal_footer">
+              <button className="modal_btn" onClick={() => setShow(!show)}>
                 Cancel
               </button>
             </div>

@@ -25,6 +25,7 @@ function SingleMoviePage() {
 
   useEffect(() => {
     dispatch(fecthMovieAction(id));
+    window.scrollTo(0, 0);
   }, [id]);
 
   useEffect(() => {
@@ -34,19 +35,19 @@ function SingleMoviePage() {
   }, [movie]);
 
   return (
-    <div>
+    <div className="page_container content">
       {movie && (
         <div className="container">
-          <Sidebar movies={relatedMovies} />
+          <Sidebar movies={relatedMovies} title={"Related Movies"} />
           <div className="single_movie">
-            <div>
+            <div className="single_movie_header">
               <h1>{movie.title}</h1>
               <h2>{movie.genre.name}</h2>
-              {movie.user_watched && <MovieWatched />}
             </div>
             <img src={movie.cover_image} alt="cover" />
-            <div>
+            <div className="single_movie_right">
               <p>{movie.description}</p>
+              <div>{movie.user_watched && <MovieWatched />}</div>
               <SingleMovieViews movie={movie} />
               <LikeDislikeMovie movie={movie} />
               <WatchListBtn movie={movie} />

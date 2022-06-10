@@ -1,9 +1,10 @@
 import React from "react";
 import MovieTitleList from "./MovieTitleList";
 
-function Sidebar({ movies }) {
+function Sidebar({ movies, title }) {
   return (
     <div className="sidebar">
+      <h1 className="sidebar_title">{title}</h1>
       {movies &&
         movies.map((movie) => (
           <div>

@@ -1,9 +1,12 @@
 .filter {
-  margin-top: 3em;
+  margin: 3em;
+  display: inline;
 }
 .filter select {
-  width: 30%;
+  width: 10%;
+  height: 3em;
+  border: 0.5px solid rgb(103, 105, 107);
+  border-radius: 15px;
   text-align: center;
   outline: none;
-  border: solid;
 }

@@ -1,6 +1,6 @@
 .movie {
   width: 400px;
-  height: 90vh;
+  height: 600px;
 }
 .movie > h1 {
   height: 100px;
@@ -21,4 +21,8 @@
   width: 50%;
   height: 50%;
   object-fit: cover;
+}
+.movie_settings {
+  display: flex;
+  justify-content: center;
 }

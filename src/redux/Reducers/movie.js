@@ -101,6 +101,7 @@ export default function movieReducer(state = initialState, action) {
         watchlist: [
           ...state?.watchlist?.map((item) => {
             if (item.id === action.movie.id) {
+              item.movie.user_watched = action.movie.watched;
               item.watched = action.movie.watched;
             }
             return item;

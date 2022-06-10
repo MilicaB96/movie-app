@@ -1,5 +1,11 @@
+.page_container {
+  margin: 5em 1em;
+}
 .single_movie {
   margin: 5em 5em 10em 5em;
+}
+.single_movie > * {
+  padding: 1em;
 }
 .single_movie h1 {
   font-size: 30px;
@@ -13,10 +19,17 @@
 }
 .single_movie img {
   float: left;
-  width: 20%;
-  height: 40%;
+  width: 30%;
+  height: 60%;
   object-fit: cover;
 }
-.single_movie div {
-  margin: 1.5em;
+.single_movie_right {
+  margin-left: 20em;
+}
+.single_movie_right > * {
+  margin: 1em;
+}
+.single_movie_header {
+  border-bottom: 1px solid black;
+  margin-bottom: 3em;
 }
