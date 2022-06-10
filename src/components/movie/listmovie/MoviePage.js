@@ -47,7 +47,7 @@ function MoviePage() {
   }, [genre]);
   return (
     <div className="page_container container">
-      <Sidebar movies={popularMovies} related={false} />
+      <Sidebar movies={popularMovies} title={"Popular Movies"} />
       <div className="content">
         <MovieSearch search={search} setSearch={setSearch} />
         <MovieFilter genre={genre} setGenre={setGenre} />

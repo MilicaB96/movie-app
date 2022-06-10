@@ -38,7 +38,7 @@ function SingleMoviePage() {
     <div className="page_container content">
       {movie && (
         <div className="container">
-          <Sidebar movies={relatedMovies} related={true} />
+          <Sidebar movies={relatedMovies} title={"Related Movies"} />
           <div className="single_movie">
             <div className="single_movie_header">
               <h1>{movie.title}</h1>
