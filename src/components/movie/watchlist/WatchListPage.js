@@ -26,7 +26,7 @@ function WatchListPage() {
   };
   return (
     <div className="movie_container">
-      {watchlist.legth ? (
+      {watchlist ? (
         watchlist.map((item) => (
           <div key={item.movie.id} className="movie_item">
             <MovieCard movie={item.movie} />

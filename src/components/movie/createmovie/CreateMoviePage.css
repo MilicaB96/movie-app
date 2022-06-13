@@ -37,3 +37,7 @@
 .form > * {
   margin: 1em;
 }
+.create p {
+  margin: 2em;
+  font-size: 15px;
+}

@@ -1,4 +1,6 @@
+import axios from "axios";
 import ApiService from "./ApiService";
+
 const ENDPOINTS = {
   MOVIE: "/movie/",
   LIKE: "/like/",
@@ -69,6 +71,12 @@ class MovieService extends ApiService {
   getRelatedMovies = async (genre) => {
     const data = await this.client.get(ENDPOINTS.RELATED, {
       params: { genre },
+    });
+    return data.data;
+  };
+  getMovieFromOmdb = async (title) => {
+    const data = await axios.get("https://www.omdbapi.com/?apikey=15af022d", {
+      params: { t: title, p: "full", type: "movie" },
     });
     return data.data;
   };

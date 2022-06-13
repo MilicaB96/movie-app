@@ -1,6 +1,6 @@
 import * as types from "../Constants/movie";
 import MovieService from "../../services/MovieService";
-import { call, put, takeLatest } from "redux-saga/effects";
+import { call, put, takeLatest, select } from "redux-saga/effects";
 import {
   createMovieError,
   createMovieSuccess,
@@ -11,6 +11,8 @@ import {
   fetchAllMoviesError,
   fetchAllMoviesSuccess,
   fetchMovieError,
+  fetchMovieFromOmdbError,
+  fetchMovieFromOmdbSuccess,
   fetchMovieSuccess,
   fetchPopularMoviesError,
   fetchPopularMoviesSuccess,
@@ -24,7 +26,10 @@ import {
   toggleWatchedSuccess,
   toggleWatchListError,
   toggleWatchListSuccess,
+  createMovieAction,
 } from "../Actions/movie";
+import { fetchGenresAction } from "../Actions/genre";
+import { selectGenres } from "../Selectors/genre";
 import ROUTES from "./../../shared/routes/routes";
 
 export function* createMovie(action) {
@@ -130,9 +135,39 @@ export function* fetchPopularMovies() {
 export function* fetchRelatedMovies({ genre }) {
   try {
     const movies = yield call(MovieService.getRelatedMovies, genre);
+    yield put(fetchGenresAction());
     yield put(fetchRelatedMoviesSuccess(movies));
   } catch (error) {
     yield put(fetchRelatedMoviesError(error));
+  }
+}
+
+export function* fetchMovieFromOmdb({ title, dispatch, history }) {
+  try {
+    const movie = yield call(MovieService.getMovieFromOmdb, title);
+    yield put(fetchMovieFromOmdbSuccess(movie));
+    const genres = yield select(selectGenres);
+    const formData = new FormData();
+    formData.append("title", movie.Title);
+    formData.append("description", movie.Plot);
+    var genre = genres.find(
+      (genre) =>
+        genre.name === movie.Genre?.split(",")[0] ||
+        genre.name === movie.Genre?.split(",")[1] ||
+        genre.name === movie.Genre?.split(",")[2]
+    );
+    formData.append("genre", genre.id);
+    const url = movie.Poster;
+    const cover_image = "myFile.jpg";
+    fetch(url).then(async (response) => {
+      const blob = await response.blob();
+      const file = new File([blob], cover_image, { type: "image/jpeg" });
+      formData.append("cover_image", file);
+      dispatch(createMovieAction(formData));
+    });
+    history.push(ROUTES.DASHBOARD);
+  } catch (error) {
+    yield put(fetchMovieFromOmdbError(error));
   }
 }
 
@@ -148,4 +183,5 @@ export default function* watchMovies() {
   yield takeLatest(types.DELETE_FROM_WATCHLIST, deleteFromWatchList);
   yield takeLatest(types.FETCH_POPULAR_MOVIES, fetchPopularMovies);
   yield takeLatest(types.FETCH_RELATED_MOVIES, fetchRelatedMovies);
+  yield takeLatest(types.FETCH_MOVIE_FROM_OMDB, fetchMovieFromOmdb);
 }

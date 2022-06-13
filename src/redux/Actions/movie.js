@@ -148,3 +148,17 @@ export const fetchRelatedMoviesError = (message) => ({
   type: types.FETCH_RELATED_MOVIES_ERROR,
   message,
 });
+export const fetchMovieFromOmdbAction = (title, dispatch, history) => ({
+  type: types.FETCH_MOVIE_FROM_OMDB,
+  title,
+  dispatch,
+  history,
+});
+export const fetchMovieFromOmdbSuccess = (movie) => ({
+  type: types.FETCH_MOVIE_FROM_OMDB_SUCCESS,
+  movie,
+});
+export const fetchMovieFromOmdbError = (message) => ({
+  type: types.FETCH_MOVIE_FROM_OMDB_ERROR,
+  message,
+});

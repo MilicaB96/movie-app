@@ -35,11 +35,11 @@ function SingleMoviePage() {
   }, [movie]);
 
   return (
-    <div className="page_container content">
+    <div className="page_container">
       {movie && (
         <div className="container">
           <Sidebar movies={relatedMovies} title={"Related Movies"} />
-          <div className="single_movie">
+          <div className="content single_movie">
             <div className="single_movie_header">
               <h1>{movie.title}</h1>
               <h2>{movie.genre.name}</h2>

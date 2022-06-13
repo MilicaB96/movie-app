@@ -2,7 +2,7 @@
   margin: 3em 1em;
 }
 .single_movie {
-  margin: 1em 5em 10em 5em;
+  padding: 5em 1em;
 }
 .single_movie > * {
   padding: 1em;
@@ -23,4 +23,9 @@
 .single_movie_header {
   border-bottom: 1px solid black;
   margin-bottom: 3em;
+}
+.single_movie img {
+  width: 300px;
+  height: 430px;
+  object-fit: cover;
 }

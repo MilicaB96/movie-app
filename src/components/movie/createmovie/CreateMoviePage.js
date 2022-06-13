@@ -9,6 +9,7 @@ import { selectGenres } from "../../../redux/Selectors/genre";
 import { fetchGenresAction } from "../../../redux/Actions/genre";
 import { createMovieAction } from "../../../redux/Actions/movie";
 import "./CreateMoviePage.css";
+import OmdbMovie from "../omdb/OmdbMovie";
 
 function CreateMoviePage() {
   const dispatch = useDispatch();
@@ -85,6 +86,10 @@ function CreateMoviePage() {
             </Form>
           )}
         </Formik>
+        <p>or select from imdb</p>
+        <div>
+          <OmdbMovie />
+        </div>
       </div>
     </div>
   );
