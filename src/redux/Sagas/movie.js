@@ -1,6 +1,6 @@
 import * as types from "../Constants/movie";
 import MovieService from "../../services/MovieService";
-import { call, put, takeLatest } from "redux-saga/effects";
+import { call, put, takeLatest, select } from "redux-saga/effects";
 import {
   createMovieError,
   createMovieSuccess,
@@ -11,6 +11,8 @@ import {
   fetchAllMoviesError,
   fetchAllMoviesSuccess,
   fetchMovieError,
+  fetchMovieFromOmdbError,
+  fetchMovieFromOmdbSuccess,
   fetchMovieSuccess,
   fetchPopularMoviesError,
   fetchPopularMoviesSuccess,
@@ -25,7 +27,10 @@ import {
   toggleWatchListError,
   toggleWatchListSuccess,
 } from "../Actions/movie";
+import { fetchGenresAction } from "../Actions/genre";
+import { selectGenres } from "../Selectors/genre";
 import ROUTES from "./../../shared/routes/routes";
+import { createMovieWithOmdb } from "../../helpers/createMovieWithOmdb";
 
 export function* createMovie(action) {
   try {
@@ -130,9 +135,21 @@ export function* fetchPopularMovies() {
 export function* fetchRelatedMovies({ genre }) {
   try {
     const movies = yield call(MovieService.getRelatedMovies, genre);
+    yield put(fetchGenresAction());
     yield put(fetchRelatedMoviesSuccess(movies));
   } catch (error) {
     yield put(fetchRelatedMoviesError(error));
+  }
+}
+
+export function* fetchMovieFromOmdb({ title, year, dispatch, history }) {
+  try {
+    const movie = yield call(MovieService.getMovieFromOmdb, title, year);
+    yield put(fetchMovieFromOmdbSuccess(movie));
+    const genres = yield select(selectGenres);
+    yield put(createMovieWithOmdb(movie, genres, dispatch, history));
+  } catch (error) {
+    yield put(fetchMovieFromOmdbError(error));
   }
 }
 
@@ -148,4 +165,5 @@ export default function* watchMovies() {
   yield takeLatest(types.DELETE_FROM_WATCHLIST, deleteFromWatchList);
   yield takeLatest(types.FETCH_POPULAR_MOVIES, fetchPopularMovies);
   yield takeLatest(types.FETCH_RELATED_MOVIES, fetchRelatedMovies);
+  yield takeLatest(types.FETCH_MOVIE_FROM_OMDB, fetchMovieFromOmdb);
 }

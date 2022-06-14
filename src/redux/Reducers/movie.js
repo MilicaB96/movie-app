@@ -11,6 +11,8 @@ const initialState = {
   watchlist: [],
   popularMovies: [],
   relatedMovies: [],
+  omdbMovie: null,
+  omdbError: null,
 };
 
 export default function movieReducer(state = initialState, action) {
@@ -142,6 +144,10 @@ export default function movieReducer(state = initialState, action) {
       return { ...state, relatedMovies: action.movies };
     case types.FETCH_RELATED_MOVIES_ERROR:
       return { ...state, error: action.message };
+    case types.FETCH_MOVIE_FROM_OMDB_SUCCESS:
+      return { ...state, omdbMovie: action.movie };
+    case types.FETCH_MOVIE_FROM_OMDB_ERROR:
+      return { ...state, omdbError: action.message };
     default:
       return state;
   }

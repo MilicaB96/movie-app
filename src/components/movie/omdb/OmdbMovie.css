@@ -1,0 +1,24 @@
+.omdb_container {
+  margin: 2em;
+}
+.omdb_container input {
+  text-align: center;
+  width: 33%;
+  border: 0.5px solid rgb(103, 105, 107);
+  border-radius: 0.5em;
+  height: 2em;
+  margin-bottom: 1em;
+  font-size: 15px;
+  outline: none;
+  outline: none;
+}
+.omdb_container button {
+  margin: 1em;
+  width: 6em;
+  height: 2em;
+  border-radius: 0.5em;
+  background-color: transparent;
+}
+.omdb_container button:hover {
+  cursor: pointer;
+}
