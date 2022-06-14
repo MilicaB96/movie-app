@@ -9,6 +9,7 @@ const ENDPOINTS = {
   WATCHED: "/watched/",
   POPULAR: "/popular-movies/",
   RELATED: "/related-movies/",
+  OMDB: "https://www.omdbapi.com/?apikey=15af022d",
 };
 class MovieService extends ApiService {
   createMovie = async (movie) => {
@@ -74,9 +75,9 @@ class MovieService extends ApiService {
     });
     return data.data;
   };
-  getMovieFromOmdb = async (title) => {
-    const data = await axios.get("https://www.omdbapi.com/?apikey=15af022d", {
-      params: { t: title, p: "full", type: "movie" },
+  getMovieFromOmdb = async (title, year) => {
+    const data = await axios.get(ENDPOINTS.OMDB, {
+      params: { t: title, y: year, p: "full", type: "movie" },
     });
     return data.data;
   };

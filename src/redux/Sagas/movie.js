@@ -26,11 +26,11 @@ import {
   toggleWatchedSuccess,
   toggleWatchListError,
   toggleWatchListSuccess,
-  createMovieAction,
 } from "../Actions/movie";
 import { fetchGenresAction } from "../Actions/genre";
 import { selectGenres } from "../Selectors/genre";
 import ROUTES from "./../../shared/routes/routes";
+import { createMovieWithOmdb } from "../../helpers/createMovieWithOmdb";
 
 export function* createMovie(action) {
   try {
@@ -142,30 +142,12 @@ export function* fetchRelatedMovies({ genre }) {
   }
 }
 
-export function* fetchMovieFromOmdb({ title, dispatch, history }) {
+export function* fetchMovieFromOmdb({ title, year, dispatch, history }) {
   try {
-    const movie = yield call(MovieService.getMovieFromOmdb, title);
+    const movie = yield call(MovieService.getMovieFromOmdb, title, year);
     yield put(fetchMovieFromOmdbSuccess(movie));
     const genres = yield select(selectGenres);
-    const formData = new FormData();
-    formData.append("title", movie.Title);
-    formData.append("description", movie.Plot);
-    var genre = genres.find(
-      (genre) =>
-        genre.name === movie.Genre?.split(",")[0] ||
-        genre.name === movie.Genre?.split(",")[1] ||
-        genre.name === movie.Genre?.split(",")[2]
-    );
-    formData.append("genre", genre.id);
-    const url = movie.Poster;
-    const cover_image = "myFile.jpg";
-    fetch(url).then(async (response) => {
-      const blob = await response.blob();
-      const file = new File([blob], cover_image, { type: "image/jpeg" });
-      formData.append("cover_image", file);
-      dispatch(createMovieAction(formData));
-    });
-    history.push(ROUTES.DASHBOARD);
+    yield put(createMovieWithOmdb(movie, genres, dispatch, history));
   } catch (error) {
     yield put(fetchMovieFromOmdbError(error));
   }
