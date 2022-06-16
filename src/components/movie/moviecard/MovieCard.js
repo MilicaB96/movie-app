@@ -16,7 +16,10 @@ function MovieCard({ movie }) {
       </h1>
       <div className="movie_content">
         <div className="movie_image_container">
-          <img src={movie.thumbnail} alt="cover" />
+          <img
+            src={movie.thumbnail ? movie.thumbnail : movie.cover_image.image}
+            alt="cover"
+          />
         </div>
         <div className="movie_description_container">
           <p className="overflow">{movie.description}</p>
