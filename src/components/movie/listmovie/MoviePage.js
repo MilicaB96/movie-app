@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  elasticSearchAction,
   fetchAllMoviesAction,
   fetchPopularMoviesAction,
 } from "../../../redux/Actions/movie";
@@ -21,10 +22,14 @@ function MoviePage() {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [genre, setGenre] = useState(null);
+  const [elastic, setElastic] = useState();
   const popularMovies = useSelector(selectPopularMovies);
   useEffect(() => {
     dispatch(fetchPopularMoviesAction());
   }, []);
+  useEffect(() => {
+    dispatch(elasticSearchAction(elastic, page));
+  }, [elastic, page]);
 
   useEffect(() => {
     dispatch(fetchAllMoviesAction(page, search, genre));
@@ -49,7 +54,13 @@ function MoviePage() {
     <div className="page_container container">
       <Sidebar movies={popularMovies} title={"Popular Movies"} />
       <div className="content">
-        <MovieSearch search={search} setSearch={setSearch} />
+        <MovieSearch
+          search={search}
+          setSearch={setSearch}
+          elastic={elastic}
+          setElastic={setElastic}
+        />
+        <br />
         <MovieFilter genre={genre} setGenre={setGenre} />
         {movies && movies.length ? (
           <div>

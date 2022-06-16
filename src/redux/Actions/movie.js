@@ -163,3 +163,19 @@ export const fetchMovieFromOmdbError = (message) => ({
   type: types.FETCH_MOVIE_FROM_OMDB_ERROR,
   message,
 });
+
+export const elasticSearchAction = (search, page, isPrev, isNext) => ({
+  type: types.ELASTIC_SEARCH,
+  search,
+  page,
+  isPrev,
+  isNext,
+});
+export const elasticSearchSuccess = (movies) => ({
+  type: types.ELASTIC_SEARCH_SUCCESS,
+  movies,
+});
+export const elasticSearchError = (message) => ({
+  type: types.ELASTIC_SEARCH_ERROR,
+  message,
+});

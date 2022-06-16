@@ -1,8 +1,8 @@
-.search {
+.search_container {
   text-align: center;
-  display: inline;
+  display: flex;
 }
-.search input {
+.search {
   margin-left: 1em;
   width: 60%;
   height: 3em;
@@ -12,4 +12,7 @@
   border-radius: 15px;
   outline: none;
   box-shadow: 5px 5px 5px rgb(207, 210, 214);
+}
+.hidden {
+  display: none;
 }

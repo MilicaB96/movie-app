@@ -8,6 +8,8 @@ import {
   deleteFromWatchListSuccess,
   dislikeMovieError,
   dislikeMovieSuccess,
+  elasticSearchError,
+  elasticSearchSuccess,
   fetchAllMoviesError,
   fetchAllMoviesSuccess,
   fetchMovieError,
@@ -153,6 +155,21 @@ export function* fetchMovieFromOmdb({ title, year, dispatch, history }) {
   }
 }
 
+export function* elasticSearch({ search, page }) {
+  try {
+    const data = yield call(MovieService.getElasticSeatch, search, page);
+    yield put(
+      elasticSearchSuccess(
+        data.results,
+        Boolean(data.previous),
+        Boolean(data.next)
+      )
+    );
+  } catch (error) {
+    yield put(elasticSearchError(error));
+  }
+}
+
 export default function* watchMovies() {
   yield takeLatest(types.CREATE_MOVIE, createMovie);
   yield takeLatest(types.FETCH_ALL_MOVIES, fetchMovies);
@@ -166,4 +183,5 @@ export default function* watchMovies() {
   yield takeLatest(types.FETCH_POPULAR_MOVIES, fetchPopularMovies);
   yield takeLatest(types.FETCH_RELATED_MOVIES, fetchRelatedMovies);
   yield takeLatest(types.FETCH_MOVIE_FROM_OMDB, fetchMovieFromOmdb);
+  yield takeLatest(types.ELASTIC_SEARCH, elasticSearch);
 }

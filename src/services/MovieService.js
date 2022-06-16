@@ -10,6 +10,7 @@ const ENDPOINTS = {
   POPULAR: "/popular-movies/",
   RELATED: "/related-movies/",
   OMDB: "https://www.omdbapi.com/?apikey=15af022d",
+  ELASTIC_SEARCH: "/search/movies/",
 };
 class MovieService extends ApiService {
   createMovie = async (movie) => {
@@ -78,6 +79,12 @@ class MovieService extends ApiService {
   getMovieFromOmdb = async (title, year) => {
     const data = await axios.get(ENDPOINTS.OMDB, {
       params: { t: title, y: year, p: "full", type: "movie" },
+    });
+    return data.data;
+  };
+  getElasticSeatch = async (search, page) => {
+    const data = await this.client.get(ENDPOINTS.ELASTIC_SEARCH, {
+      params: { search, page },
     });
     return data.data;
   };

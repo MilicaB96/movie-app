@@ -148,6 +148,14 @@ export default function movieReducer(state = initialState, action) {
       return { ...state, omdbMovie: action.movie };
     case types.FETCH_MOVIE_FROM_OMDB_ERROR:
       return { ...state, omdbError: action.message };
+    case types.ELASTIC_SEARCH_SUCCESS:
+      return {
+        ...state,
+        movies: action.movies,
+        paginationState: { isPrev: action.isPrev, isNext: action.isNext },
+      };
+    case types.ELASTIC_SEARCH_ERROR:
+      return { ...state, error: action.message };
     default:
       return state;
   }
